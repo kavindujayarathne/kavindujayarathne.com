@@ -1,0 +1,278 @@
+---
+---
+
+<header>
+  <div class="logo">
+    <a href="/" class="full-name">Kavindu Jayarathne</a>
+    <a href="/" class="short-name">Kavindu</a>
+  </div>
+  <nav>
+    <ul class="nav-links">
+      <button class="close-nav" aria-label="Close navigation menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6L6 18M6 6l12 12"></path>
+        </svg>
+      </button>
+      <li><a href="/about">About</a></li>
+      <li><a href="/blogs">Blogs</a></li>
+      <li><a href="/projects">Projects</a></li>
+    </ul>
+    <div class="mobile-actions">
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <div class="action-icons">
+        <button id="theme-toggle" aria-label="Toggle theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <a href="/rss.xml" class="icon-link" aria-label="RSS Feed">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile navigation toggle
+  const setupMobileNav = () => {
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const closeNav = document.querySelector('.close-nav');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
+
+    const toggleNav = () => {
+      navLinks?.classList.toggle('active');
+      body.style.overflow = navLinks?.classList.contains('active') ? 'hidden' : '';
+    };
+
+    mobileNavToggle?.addEventListener('click', toggleNav);
+    closeNav?.addEventListener('click', toggleNav);
+  };
+
+  // Theme toggle functionality
+  const setupThemeToggle = () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    themeToggle?.addEventListener('click', () => {
+      const isLightTheme = document.documentElement.classList.toggle('light-theme');
+      localStorage.setItem('theme', isLightTheme ? 'light' : 'dark');
+    });
+  };
+
+  // Run on initial page load
+  setupMobileNav();
+  setupThemeToggle();
+  
+  // Re-run after transitions
+  document.addEventListener('astro:after-swap', () => {
+    setupMobileNav();
+    setupThemeToggle();
+  });
+</script>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+    width: 100%;
+    transition: background-color var(--transition-speed) ease;
+  }
+
+  .logo a {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 700;
+    color: var(--accent-color);
+  }
+
+  .short-name {
+    display: none;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 1rem; /* 16px */
+    font-weight: 500;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width var(--transition-speed) ease, 
+                background-color var(--transition-speed) ease;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .close-nav {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-color);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    transition: color var(--transition-speed) ease;
+  }
+
+  .close-nav:hover {
+    color: var(--accent-color);
+  }
+
+  .mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .action-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+  }
+
+  #theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+
+  #theme-toggle:hover, .icon-link:hover {
+    color: var(--accent-color);
+  }
+
+  /* Hide sun icon in dark mode, moon icon in light mode */
+  .sun-icon {
+    display: none;
+  }
+  
+  html.light-theme .moon-icon {
+    display: none;
+  }
+  
+  html.light-theme .sun-icon {
+    display: block;
+  }
+
+  .mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--text-color);
+    transition: color var(--transition-speed) ease;
+    width: 24px;
+    height: 24px;
+  }
+
+  .mobile-nav-toggle:hover {
+    color: var(--accent-color);
+  }
+
+  @media (max-width: 768px) {
+    .full-name {
+      display: none;
+    }
+
+    .short-name {
+      display: block;
+    }
+
+    .mobile-nav-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      order: -1; /* Move hamburger menu to the left */
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      background-color: var(--background-color);
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+      transition: right var(--transition-speed) ease, 
+                  background-color var(--transition-speed) ease;
+      z-index: 99;
+    }
+
+    .nav-links.active {
+      right: 0;
+    }
+
+    .nav-links li {
+      margin: 1.5rem 0;
+      font-size: 1.2rem;
+    }
+
+    .close-nav {
+      display: block;
+    }
+
+    .mobile-actions {
+      gap: 1rem;
+      margin-left: auto; /* Push icons to the right */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logo a {
+      font-size: 1.3rem;
+    }
+
+    .nav-links {
+      width: 85%;
+    }
+
+    .mobile-actions {
+      gap: 0.75rem;
+    }
+  }
+</style>

@@ -1,0 +1,182 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BaseHead from '../components/BaseHead.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Kavindu Jayarathne's personal website - Computer Science enthusiast who loves to build and break things" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <div class="container">
+      <Header />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --background-color: #030d13;
+    --text-color: #ffffff;
+    --accent-color: #64ffda;
+    --secondary-color: #8892b0;
+    --header-height: 80px;
+    --section-padding: 1.5rem 0;
+    
+    /* Card and UI element backgrounds */
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-hover-bg: rgba(255, 255, 255, 0.08);
+    --tag-bg: rgba(100, 255, 218, 0.1);
+    --tag-hover-bg: rgba(100, 255, 218, 0.2);
+    
+    /* Transition for theme switching */
+    --transition-speed: 0.3s;
+  }
+
+  html.light-theme {
+    --background-color: #f8f9fa;
+    --text-color: #212529;
+    --secondary-color: #495057;
+    --accent-color: #0d6efd;
+    
+    /* Card and UI element backgrounds for light theme */
+    --card-bg: #ffffff;
+    --card-hover-bg: #f1f3f5;
+    --tag-bg: rgba(13, 110, 253, 0.1);
+    --tag-hover-bg: rgba(13, 110, 253, 0.2);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color var(--transition-speed) ease, 
+                color var(--transition-speed) ease;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+    padding: var(--section-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+  }
+
+  a:hover {
+    color: var(--accent-color);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .social-icons a {
+    font-size: 1.2rem;
+    transition: transform var(--transition-speed) ease, color var(--transition-speed) ease;
+  }
+
+  .social-icons a:hover {
+    transform: translateY(-3px);
+    color: var(--accent-color);
+  }
+
+  /* Apply transitions to common elements */
+  h1, h2, h3, h4, h5, h6, p, span, div, button, input, textarea, select, li {
+    transition: color var(--transition-speed) ease, 
+                background-color var(--transition-speed) ease,
+                border-color var(--transition-speed) ease;
+  }
+
+  /* Apply transitions to specific UI elements */
+  .tag, .project-card, .blog-item, .project-link, button {
+    transition: background-color var(--transition-speed) ease, 
+                color var(--transition-speed) ease,
+                transform var(--transition-speed) ease,
+                border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
+  }
+
+  /* Responsive font sizes */
+  @media (max-width: 768px) {
+    html {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 0 1rem;
+    }
+    
+    :root {
+      --section-padding: 1rem 0;
+    }
+  }
+</style>
+
+<script>
+  // Theme persistence for transitions
+  document.addEventListener('astro:after-swap', () => {
+    // Apply theme after page transition
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.documentElement.classList.add('light-theme');
+    } else {
+      document.documentElement.classList.remove('light-theme');
+    }
+  });
+</script>

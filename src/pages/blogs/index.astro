@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allBlogPosts = await getCollection('blog');
+const sortedPosts = allBlogPosts.sort(
+  (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+---
+
+<Layout title="Blog | Kavindu Jayarathne" description="Read Kavindu Jayarathne's blog posts about computer science, programming, and technology.">
+  <section class="blogs">
+    <div class="blogs-content">
+      {sortedPosts.length > 0 ? (
+        <ul class="blog-list">
+          {sortedPosts.map(post => (
+            <li class="blog-item">
+              <article>
+                <div class="blog-header">
+                  <h2 class="blog-title">
+                    <a href={`/blogs/${post.slug}`}>{post.data.title}</a>
+                  </h2>
+                  <time class="blog-date">{new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}</time>
+                </div>
+                <p class="blog-excerpt">{post.data.description}</p>
+                <div class="blog-tags">
+                  {post.data.tags.map(tag => (
+                    <a href={`/tags/${tag.toLowerCase()}`} class="tag">{tag}</a>
+                  ))}
+                </div>
+              </article>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="coming-soon">
+          Blog posts coming soon! Stay tuned for articles about computer science, programming, and technology.
+        </p>
+      )}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .blogs {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--section-padding);
+  }
+
+  .blog-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .blog-item {
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .blog-title a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .blog-title a:hover {
+    color: var(--accent-color);
+  }
+
+  .blog-date {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-top: 0.25rem;
+  }
+
+  .blog-excerpt {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--secondary-color);
+    margin: 0.5rem 0;
+  }
+
+  .blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--accent-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .tag:hover {
+    background-color: rgba(100, 255, 218, 0.2);
+  }
+
+  .coming-soon {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .blog-title {
+      font-size: 1.3rem;
+    }
+  }
+</style>

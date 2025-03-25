@@ -1,0 +1,36 @@
+---
+import SocialIcons from './SocialIcons.astro';
+---
+
+<footer>
+  <div class="copyright">
+    &copy; {new Date().getFullYear()} Kavindu Jayarathne. All Rights Reserved.
+  </div>
+  <div class="footer-socials">
+    <SocialIcons />
+  </div>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    margin-top: auto;
+  }
+
+  .copyright {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+  }
+
+  @media (max-width: 768px) {
+    footer {
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+      padding: 1rem 0;
+    }
+  }
+</style>

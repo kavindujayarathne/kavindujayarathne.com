@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Kavindu Jayarathne | Personal Website">
+  <section class="hero">
+    <div class="hero-content">
+      <div class="profile-image">
+        <img src="/hero-img.png" alt="Kavindu Jayarathne" />
+      </div>
+      <div class="intro-text">
+        <h1>Hello World,</h1>
+        <p>
+          My name is <span class="highlight">Kavindu</span>. I am a Computer Science Person who
+          loves to build and break things.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - var(--header-height) - 120px); /* Reduced from 100px to 120px */
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .profile-image {
+    max-width: 300px;
+  }
+
+  .profile-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .intro-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .intro-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--secondary-color);
+  }
+
+  .highlight {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  @media (min-width: 768px) {
+    .hero-content {
+      flex-direction: row;
+      text-align: left;
+      gap: 4rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 2rem 0;
+    }
+
+    .profile-image {
+      max-width: 200px;
+    }
+
+    .intro-text h1 {
+      font-size: 2rem;
+    }
+
+    .intro-text p {
+      font-size: 1.1rem;
+    }
+  }
+</style>
+
