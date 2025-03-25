@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <header>
@@ -9,27 +10,99 @@
   <nav>
     <ul class="nav-links">
       <button class="close-nav" aria-label="Close navigation menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
           <path d="M18 6L6 18M6 6l12 12"></path>
         </svg>
       </button>
       <li><a href="/about">About</a></li>
       <li><a href="/blogs">Blogs</a></li>
-      <li><a href="/projects">Projects</a></li>
     </ul>
     <div class="mobile-actions">
       <button class="mobile-nav-toggle" aria-label="Toggle navigation menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
           <path d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
       <div class="action-icons">
         <button id="theme-toggle" aria-label="Toggle theme">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="moon-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg
+          >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="sun-icon"
+            ><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line
+              x1="12"
+              y1="21"
+              x2="12"
+              y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line
+              x1="18.36"
+              y1="18.36"
+              x2="19.78"
+              y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line
+              x1="21"
+              y1="12"
+              x2="23"
+              y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line
+              x1="18.36"
+              y1="5.64"
+              x2="19.78"
+              y2="4.22"></line></svg
+          >
         </button>
         <a href="/rss.xml" class="icon-link" aria-label="RSS Feed">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle
+              cx="5"
+              cy="19"
+              r="1"></circle></svg
+          >
         </a>
       </div>
     </div>
@@ -56,7 +129,7 @@
   // Theme toggle functionality
   const setupThemeToggle = () => {
     const themeToggle = document.getElementById('theme-toggle');
-    
+
     themeToggle?.addEventListener('click', () => {
       const isLightTheme = document.documentElement.classList.toggle('light-theme');
       localStorage.setItem('theme', isLightTheme ? 'light' : 'dark');
@@ -66,7 +139,7 @@
   // Run on initial page load
   setupMobileNav();
   setupThemeToggle();
-  
+
   // Re-run after transitions
   document.addEventListener('astro:after-swap', () => {
     setupMobileNav();
@@ -121,8 +194,9 @@
     bottom: -4px;
     left: 0;
     background-color: var(--accent-color);
-    transition: width var(--transition-speed) ease, 
-                background-color var(--transition-speed) ease;
+    transition:
+      width var(--transition-speed) ease,
+      background-color var(--transition-speed) ease;
   }
 
   .nav-links a:hover::after {
@@ -179,7 +253,8 @@
     height: 20px;
   }
 
-  #theme-toggle:hover, .icon-link:hover {
+  #theme-toggle:hover,
+  .icon-link:hover {
     color: var(--accent-color);
   }
 
@@ -187,11 +262,11 @@
   .sun-icon {
     display: none;
   }
-  
+
   html.light-theme .moon-icon {
     display: none;
   }
-  
+
   html.light-theme .sun-icon {
     display: block;
   }
@@ -238,8 +313,9 @@
       flex-direction: column;
       justify-content: center;
       padding: 2rem;
-      transition: right var(--transition-speed) ease, 
-                  background-color var(--transition-speed) ease;
+      transition:
+        right var(--transition-speed) ease,
+        background-color var(--transition-speed) ease;
       z-index: 99;
     }
 
@@ -276,3 +352,4 @@
     }
   }
 </style>
+
