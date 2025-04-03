@@ -20,3 +20,6 @@ pnpm-debug.log*
 
 # Deployment settings (for Vercel CLI)
 .vercel/
+
+# Ignore astro files
+*.astro

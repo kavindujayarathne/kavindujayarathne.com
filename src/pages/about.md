@@ -8,10 +8,10 @@ description:
 
 ## Hello, I'm Kavindu
 
-This isn’t just a typical “About Me.” It’s a personal timeline, a collection of everything I’ve
-explored, struggled with, built, and understood in my own way. This includes four chapters that
-reflect how it all began for me. They don’t capture everything I’ll ever learn, but they shaped the
-foundation. What comes next will be built on top of this.
+This is my personal timeline, a collection of everything I’ve explored, struggled with, built, and
+understood in my own way. This includes four chapters that reflect how it all began for me. They
+don’t capture everything I’ll ever learn, but they shaped the foundation. What comes next will be
+built on top of this.
 
 ## Chapter 1
 
@@ -196,14 +196,14 @@ nameservers, and finally resolving the IP address of the server and sending the 
 user’s device to load the web server in the browser.
 
 I kept going with the flow and ended up learning all the fundamental networking concepts from how
-devices communicate on a network, to how data flows through each layer of the TCP/IP and OSI models.
-I started understanding things like IP addressing, DHCP servers, MAC addresses, ARP, routing,
-switching, ports, port forwarding, VPN, Proxy, Proxychains, protocols, and how everything fits
-together across all the network layers from the physical layer up to the application layer.
+devices communicate on a network, to how data flows through each layer of the OSI model. I started
+understanding things like IP addressing, DHCP servers, MAC addresses, ARP, routing, switching,
+ports, port forwarding, VPN, Proxy, Proxychains, protocols, and how everything fits together across
+all the network layers from the physical layer up to the application layer.
 
-After that, I created a cybersecurity lab inside virtual machines and started simulating some real
-world networking scenarios with user machines, a software based router like pfSense, a Ubuntu
-server, some Active Directory setups, and stuff like that.
+After that, I created a cybersecurity lab using a hypervisor, where I set up multiple virtual
+machines to simulate real world networking scenarios, including user machines, a software-based
+router like pfSense, a Ubuntu server, some Active Directory setups, and things like that.
 
 Networking is the best way to understand how everything is connected throughout the internet, and
 how the internet actually works.
@@ -211,12 +211,13 @@ how the internet actually works.
 The knowledge I gained through all those networking experiences has helped me a lot ever since I
 learned them, especially when it comes to connecting the dots and seeing the bigger picture.
 
-This is the last chapter. It has finally come to an end.
+This is the end of the last chapter.
 
 ## Final words to the world
 
-I appreciate it if you’re reading this far. It took me exactly a complete year to go through these
-chapters, and I believe this will be the backbone for the rest of my journey in computer science.
+I appreciate it if you’re reading this far. These chapters mark the major milestones that define how
+it all began for me, and it’s not the end. I believe this will be the backbone for the rest of my
+journey in computer science.
 
 What I want to say at the end is, keep loving what you’re doing. Sometimes in life, you might be
 unable to do what you really want. If that’s the case, then do what you have to do with love and

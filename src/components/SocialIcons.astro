@@ -35,3 +35,21 @@ const socials = [
     </a>
   ))}
 </div>
+
+<style>
+  .social-icons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .social-icons a {
+    font-size: 1.2rem;
+    transition: transform var(--transition-speed) ease, color var(--transition-speed) ease;
+  }
+
+  .social-icons a:hover {
+    transform: translateY(-3px);
+    color: var(--accent-color);
+  }
+</style>
