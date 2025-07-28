@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import BlogPostTitleLink from '../../components/BlogPostTitleLink.astro';
 
 export async function getStaticPaths() {
   const allBlogPosts = await getCollection('blog');
@@ -39,9 +40,11 @@ const sortedPosts = posts.sort(
             <li class="blog-item">
               <article>
                 <div class="blog-header">
-                  <h2 class="blog-title">
-                    <a href={`/blogs/${post.slug}`}>{post.data.title}</a>
-                  </h2>
+                  <BlogPostTitleLink 
+                    title={post.data.title}
+                    slug={post.slug}
+                    externalUrl={post.data.externalUrl}
+                  />
                   <time class="blog-date">{new Date(post.data.pubDate).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -102,22 +105,6 @@ const sortedPosts = posts.sort(
     display: flex;
     flex-direction: column;
     margin-bottom: 0.5rem;
-  }
-
-  .blog-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0;
-  }
-
-  .blog-title a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .blog-title a:hover {
-    color: var(--accent-color);
   }
 
   .blog-date {
@@ -181,10 +168,6 @@ const sortedPosts = posts.sort(
 
   @media (max-width: 768px) {
     h2 {
-      font-size: 1.3rem;
-    }
-
-    .blog-title {
       font-size: 1.3rem;
     }
   }

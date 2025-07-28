@@ -4,7 +4,9 @@ import BlogPost from '../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
-  return blogEntries.map(entry => ({
+  // Filter out external blog posts
+  const internalBlogEntries = blogEntries.filter(entry => !entry.data.externalUrl);
+  return internalBlogEntries.map(entry => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
