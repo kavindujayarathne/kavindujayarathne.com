@@ -12,7 +12,7 @@ export async function GET(context: { site: string }) {
       title: post.data.title,
       pubDate: post.data.pubDate,
       description: post.data.description,
-      link: `/blogs/${post.slug}/`,
+      link: post.data.externalUrl || `/blogs/${post.slug}/`,
       categories: post.data.tags,
     })),
     customData: `<language>en-us</language>`,
