@@ -21,7 +21,6 @@ My personal website built with Astro, TypeScript, and CSS.
    ```bash
    npm run dev
    ```
-4. Open [http://localhost:4321](http://localhost:4321) in your browser
 
 ## Deployment
 
@@ -31,4 +30,3 @@ automatically build and deploy changes when code is pushed to the main branch.
 ## License
 
 [MIT](/LICENSE)
-
