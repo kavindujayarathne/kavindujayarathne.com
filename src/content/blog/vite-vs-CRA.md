@@ -1,5 +1,6 @@
 ---
-title: 'Vite over Create React App (CRA): The React team deprecating Create React App for new apps?'
+title:
+  'Vite over Create React App (CRA): The React team deprecating Create React App for new projects?'
 description:
   'React officially deprecated Create React App (CRA) in 2025. In this article, I dive into why CRA
   is no longer recommended, and why Vite is now the go-to tool for scaffolding new React projects.'
