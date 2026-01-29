@@ -6,5 +6,5 @@ description:
   serious about mastering the terminal, this one’s for you.....'
 pubDate: '2024-09-04'
 tags: ['Shell', 'Terminal']
-externalUrl: 'https://www.linkedin.com/pulse/different-shell-session-types-programs-unix-linux-kavindu-jayarathne-mvhpe/?trackingId=8e2nLK2itDpFn%2Fhptnte%2BQ%3D%3D'
+externalUrl: 'https://www.linkedin.com/pulse/different-shell-session-types-programs-unix-linux-kavindu-jayarathne-xmd7f'
 ---

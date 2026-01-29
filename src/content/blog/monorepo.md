@@ -5,5 +5,5 @@ description:
   decided to dig into it. This post covers what I learned along the way.'
 pubDate: '2024-08-16'
 tags: ['Repository-related']
-externalUrl: 'https://www.linkedin.com/pulse/what-monorepo-kavindu-jayarathne-8pghe/?trackingId=t3HlwYBOFZ%2BnjBG63VI12A%3D%3D'
+externalUrl: 'https://www.linkedin.com/pulse/what-monorepo-kavindu-jayarathne-0ujlf'
 ---

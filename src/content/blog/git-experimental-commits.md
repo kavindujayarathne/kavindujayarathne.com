@@ -5,5 +5,5 @@ description:
   key Git concepts like HEAD, detached HEAD state, and more....'
 pubDate: '2024-09-18'
 tags: ['Git']
-externalUrl: 'https://www.linkedin.com/pulse/experimental-commits-git-kavindu-jayarathne-pw3qe/?trackingId=FUDB94CLGKs6xzt0E%2BEknA%3D%3D'
+externalUrl: 'https://www.linkedin.com/pulse/experimental-commits-git-kavindu-jayarathne-ys1hf'
 ---

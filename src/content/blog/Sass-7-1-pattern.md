@@ -6,5 +6,5 @@ description:
   converters and a constants map setup. I hope this will help you structure your Sass environment...'
 pubDate: '2024-07-10'
 tags: ['Web Dev', 'Sass', 'Frontend']
-externalUrl: 'https://www.linkedin.com/pulse/7-1-patternarchitecture-sass-kavindu-jayarathne-j1sqe/?trackingId=S38C1DiVvUj5XrPuSzQzww%3D%3D'
+externalUrl: 'https://www.linkedin.com/pulse/7-1-patternarchitecture-sass-kavindu-jayarathne-mcfcf'
 ---

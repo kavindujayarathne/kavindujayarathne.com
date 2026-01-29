@@ -6,5 +6,5 @@ description:
   how each one behaves and more...'
 pubDate: '2024-07-25'
 tags: ['JavaScript']
-externalUrl: 'https://www.linkedin.com/pulse/efficient-way-looping-through-array-kavindu-jayarathne-0ocbe/?trackingId=R%2BehstFX6XCAOGjFi%2FxBZg%3D%3D'
+externalUrl: 'https://www.linkedin.com/pulse/efficient-way-looping-through-array-kavindu-jayarathne-kdezf'
 ---
