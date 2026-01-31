@@ -69,8 +69,10 @@ properties is itself an object (like a nested object), then that part is still s
 
 ## TL;DR (For the nerds and memory geeks like me)
 
-    •	const a = b; → reference copy (same memory)
-    •	const a = { b }; → nested ref (b inside a)
-    •	const a = { ...b }; → shallow copy (new memory, but shallow)
+```javascript
+const a = b; // reference copy (same memory)
+const a = { b }; // nested ref (b inside a)
+const a = { ...b }; // shallow copy (new memory, but shallow)
+```
 
 Knowing how memory reference works with objects will save you from so many bugs later on, trust me.
