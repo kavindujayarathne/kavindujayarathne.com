@@ -10,10 +10,6 @@ tags: ['Git', 'GitHub']
 When it comes to git, there are so many useful flags that most people don’t even know exist. One of
 them is `--allow-empty` flag. Let's talk about that in this writing.
 
-Normally, we can’t create a commit without any changes in the git working tree. But I found this new
-flag called `--allow-empty` which we can use in git to create a commit even if there are not changes
-in the working directory or staging area.
-
 Normally, we can't create a commit without any changes in the git working tree. But I found this
 flag called `--allow-empty` which we can use in git to create a commit even if there are no changes
 in the working directory or staging area.
