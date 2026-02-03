@@ -10,9 +10,9 @@ tags: ['Networking', 'Web', 'HTTP']
 ## What is an HTTP request?
 
 An HTTP request is simply the message that a web browser or any other HTTP client sends to a server
-to ask for something. such as, requesting data from the server, sending data to server and more
+to ask for something, such as requesting data from the server, sending data to the server, and more
 depending on the HTTP method used. The HTTP client forms this HTTP request and sends it to the
-server through a network connection. usually after completing the DNS, TCP, and TLS precesses.
+server through a network connection, usually after completing the DNS, TCP, and TLS processes.
 
 ### HTTP Request Structure
 
