@@ -10,51 +10,42 @@ const sortedPosts = allBlogPosts.sort(
 ---
 
 <Layout title="Blog | Kavindu Jayarathne" description="Read Kavindu Jayarathne's blog posts about computer science, programming, and technology.">
-  <section class="blogs">
-    <div class="blogs-content">
-      {sortedPosts.length > 0 ? (
-        <ul class="blog-list">
-          {sortedPosts.map(post => (
-            <li class="blog-item">
-              <article>
-                <div class="blog-header">
-                  <BlogPostTitleLink 
-                    title={post.data.title}
-                    slug={post.slug}
-                    externalUrl={post.data.externalUrl}
-                  />
-                  <time class="blog-date">{new Date(post.data.pubDate).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}</time>
-                </div>
-                <p class="blog-excerpt">{post.data.description}</p>
-                <div class="blog-tags">
-                  {post.data.tags.map(tag => (
-                    <a href={`/tags/${tag.toLowerCase()}`} class="tag">{tag}</a>
-                  ))}
-                </div>
-              </article>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="coming-soon">
-          Blog posts coming soon! Stay tuned for articles about computer science, programming, and technology.
-        </p>
-      )}
-    </div>
-  </section>
+  <div class="content-container">
+    {sortedPosts.length > 0 ? (
+      <ul class="blog-list"> {sortedPosts.map(post => (
+          <li class="blog-item">
+            <article>
+              <div class="blog-header">
+                <BlogPostTitleLink 
+                  title={post.data.title}
+                  slug={post.slug}
+                  externalUrl={post.data.externalUrl}
+                />
+                <time class="blog-date">{new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}</time>
+              </div>
+              <p class="blog-excerpt">{post.data.description}</p>
+              <div class="blog-tags">
+                {post.data.tags.map(tag => (
+                  <a href={`/tags/${tag.toLowerCase()}`} class="tag">{tag}</a>
+                ))}
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="coming-soon">
+        Blog posts coming soon! Stay tuned for articles about computer science, programming, and technology.
+      </p>
+    )}
+  </div>
 </Layout>
 
 <style>
-  .blogs {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: var(--section-padding);
-  }
-
   .blog-list {
     list-style: none;
     padding: 0;

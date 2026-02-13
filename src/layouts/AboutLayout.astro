@@ -5,19 +5,14 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
-  <div class="about">
-    <slot />
-    <div class="social-container"></div>
+  <div class="content-container">
+    <article class="about">
+      <slot />
+    </article>
   </div>
 </Layout>
 
 <style>
-  .about {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: var(--section-padding);
-  }
-
   .about :global(ul) {
     margin: 1rem 0 1.2rem 2rem;
     color: var(--secondary-color);
@@ -49,11 +44,5 @@ const { frontmatter } = Astro.props;
     line-height: 1.8;
     color: var(--secondary-color);
     margin-bottom: 1rem;
-  }
-
-  .social-container {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
   }
 </style>

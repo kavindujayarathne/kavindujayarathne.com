@@ -1,5 +1,4 @@
 ---
-// Import utilities
 import { ClientRouter } from 'astro:transitions';
 
 // Define props interface
@@ -14,7 +13,7 @@ export interface Props {
 const {
   title,
   description,
-  image = '/hero-img.png',
+  image = '/splash_low.png',
   canonicalURL = new URL(Astro.url.pathname, Astro.site),
 } = Astro.props;
 ---
@@ -42,12 +41,14 @@ const {
 <meta property="og:image" content={new URL(image, Astro.site)} />
 <meta property="og:site_name" content="Kavindu Jayarathne" />
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.site)} />
+<!-- X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image, Astro.site)} />
+<meta name="twitter:site" content="@at_kavindu" />
+<meta name="twitter:creator" content="@at_kavindu" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />

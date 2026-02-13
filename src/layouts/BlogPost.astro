@@ -6,10 +6,9 @@ interface Props {
   description: string;
   pubDate: Date;
   tags: string[];
-  image?: string;
 }
 
-const { title, description, pubDate, tags /*image*/ } = Astro.props;
+const { title, description, pubDate, tags } = Astro.props;
 const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
@@ -18,7 +17,7 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
 ---
 
 <Layout title={`${title} | Kavindu Jayarathne`} description={description}>
-  <div class="blog-container">
+  <div class="content-container blog-container align-top">
     <article class="blog-content">
       <header>
         <h1>{title}</h1>
@@ -109,18 +108,13 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
 
 <style>
   .blog-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
     width: 100%;
   }
 
   .blog-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* flex: 1; */
     min-width: 0;
     width: 100%;
   }
@@ -130,7 +124,7 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   }
 
   h1 {
-    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-size: clamp(2rem, 5vw, 2rem);
     margin-bottom: 0.5rem;
     color: var(--accent-color);
   }
@@ -321,11 +315,8 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   }
 
   .content :global(img) {
-    display: block;
-    /* max-width: 100%; */
-    /* height: auto; */
     border-radius: 8px;
-    margin: auto;
+    margin: 0 auto;
   }
 
   .content :global(img + em) {
@@ -335,29 +326,6 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
     color: var(--secondary-color);
     margin-bottom: 2rem;
   }
-
-  /* .content :global(figure) { */
-  /*   max-width: 100%; */
-  /*   margin: 2rem 0; */
-  /* } */
-
-  /* .content :global(.should-changed) { */
-  /*   max-width: 100%; */
-  /*   margin: 2rem 0; */
-  /* } */
-  /**/
-  /* .content :global(figure img) { */
-  /*   width: 100%; */
-  /*   height: auto; */
-  /*   border-radius: 8px; */
-  /* } */
-  /**/
-  /* .content :global(figcaption) { */
-  /*   text-align: center; */
-  /*   font-size: 0.9rem; */
-  /*   color: var(--secondary-color); */
-  /*   margin-top: 0.5rem; */
-  /* } */
 
   .content :global(a) {
     color: var(--accent-color);

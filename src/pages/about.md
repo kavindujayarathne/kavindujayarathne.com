@@ -17,7 +17,7 @@ built on top of this.
 
 Chapter one starts from the university. University was my starting point for all kind of computer
 related things. I first started with Java. That was the first programming language I learnt. Back
-then, I had just started. I didn’t even know what programming was — let alone the languages. But I
+then, I had just started. I didn’t even know what programming was, let alone the languages. But I
 kept going.
 
 I came across these fundamental concepts of programming through university modules like Data

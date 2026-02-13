@@ -30,7 +30,7 @@ const sortedPosts = posts.sort(
 ---
 
 <Layout title={`${tag} | Kavindu Jayarathne`} description={`Blog posts tagged with ${tag}`}>
-  <section class="tag-page">
+  <div class="content-container align-top">
     <h2>Posts tagged with <span class="highlight">{tag}</span></h2>
     
     <div class="tag-content">
@@ -69,16 +69,10 @@ const sortedPosts = posts.sort(
         <a href="/blogs">&larr; Back to all posts</a>
       </div>
     </div>
-  </section>
+  </div>
 </Layout>
 
 <style>
-  .tag-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: var(--section-padding);
-  }
-
   h2 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;

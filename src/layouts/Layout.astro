@@ -47,10 +47,10 @@ const { title, description = "Kavindu Jayarathne's personal website - Computer S
   }
 
   html.light-theme {
-    --background-color: #f8f9fa;
+    --background-color: #faf0d2;
     --text-color: #212529;
     --secondary-color: #495057;
-    --accent-color: #0d6efd;
+    --accent-color: black;
     
     /* Card and UI element backgrounds for light theme */
     --card-bg: #ffffff;
@@ -66,7 +66,7 @@ const { title, description = "Kavindu Jayarathne's personal website - Computer S
   }
 
   html {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins','Times New Roman', Times, serif;
     background-color: var(--background-color);
     color: var(--text-color);
     scroll-behavior: smooth;
@@ -75,15 +75,12 @@ const { title, description = "Kavindu Jayarathne's personal website - Computer S
   }
 
   body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
     transition: background-color var(--transition-speed) ease, 
                 color var(--transition-speed) ease;
   }
 
   .container {
-    width: 100%;
+    /* width: 100%; */
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.5rem;
@@ -98,6 +95,16 @@ const { title, description = "Kavindu Jayarathne's personal website - Computer S
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+  }
+
+  .content-container {
+    max-width: 800px;
+    padding: var(--section-padding);
+  }
+
+  main > .align-top {
+    margin-bottom: auto;
   }
 
   a {
@@ -111,6 +118,7 @@ const { title, description = "Kavindu Jayarathne's personal website - Computer S
   }
 
   img {
+    display: block;
     max-width: 100%;
     height: auto;
   }
