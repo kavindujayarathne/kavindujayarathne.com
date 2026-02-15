@@ -1,5 +1,5 @@
 ---
-title: 'What Are These HTTP Requests???'
+title: 'What Are These HTTP Requests'
 description:
   'A beginner-friendly guide to understanding HTTP requests and the differences between HTTP/1.1 and
   HTTP/2'
