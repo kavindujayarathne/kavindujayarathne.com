@@ -5,10 +5,11 @@ pubDate: '2025-05-19'
 tags: ['Web Security', 'Cookies']
 ---
 
-Recently, I was messing around with how cookies work. Epecially from a security perspective. If
-you’re into web hacking or just wanna see what’s really happening inside your browser, go to
-DevTools → Application tab → open the Cookies section, and you’ll see a list of cookies for the
-domain you’re visiting.
+Recently, I was messing around with how cookies work, especially from a security perspective. If
+you're into web hacking or just wanna see what's really happening inside your browser, go to
+DevTools → Application tab → open the Cookies section if you're using a Chromium-based browser or
+DevTools → Storage tab → open the Cookies section if you're using Firefox, and you'll see a list of
+cookies for the domain you're visiting.
 
 Now once you click on a domain (like github.com or whatever site you’re testing), you’ll notice a
 bunch of columns for each cookie, things like Secure, HttpOnly, SameSite, etc.
