@@ -1,7 +1,7 @@
 ---
 title: 'How Cookie Flags Actually Protect Your Sessions'
 description: 'Breaking down the cookie flags that protect against XSS and CSRF'
-pubDate: '2025-05-17'
+pubDate: '2025-05-19'
 tags: ['Web Security', 'Cookies']
 ---
 
