@@ -151,5 +151,5 @@ there using the brew unlink command.
 Before wrapping this up, if you have a doubt about why I’m writing about this, my answer would be I
 just wanted to keep a note of this confusion on the internet. That’s it.
 
-And if you know something more than this about this behavior or if you think I was wrong somewhere
-in this, let me know and I will update this writing so others will also be informed about that.
+If you know more about this behavior, or if you think I was wrong somewhere here, let me know and I
+will update this writing so others will also be informed about that.
