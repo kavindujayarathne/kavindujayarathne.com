@@ -10,6 +10,14 @@ My personal website built with Astro, TypeScript, and CSS.
 - SEO optimized
 - Fully responsive design with mobile-first approach
 
+## Lighthouse Score
+
+<p align="center">
+  <a href="https://pagespeed.web.dev/analysis/https-kavindujayarathne-com/52hfh0q72a?form_factor=desktop">
+    <img width="710" alt="Kavindu Jayarathne's personal blog lighthouse result" src="lighthouse-result.svg">
+  <a>
+</p>
+
 ## Running Locally
 
 1. Clone the repository
