@@ -14,7 +14,7 @@ My personal website built with Astro, TypeScript, and CSS.
 
 <p align="center">
   <a href="https://pagespeed.web.dev/analysis/https-kavindujayarathne-com/52hfh0q72a?form_factor=desktop">
-    <img width="710" alt="Kavindu Jayarathne's personal blog lighthouse result" src="lighthouse-result.svg">
+    <img width="710" alt="Kavindu Jayarathne's personal blog lighthouse result" src="public/lighthouse-result.svg">
   <a>
 </p>
 
