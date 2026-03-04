@@ -1,27 +1,31 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import { getSortedPosts } from '../../utils';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
-  // Filter out external blog posts
-  const internalBlogEntries = blogEntries.filter(entry => !entry.data.externalUrl);
+  const publishedEntries = getSortedPosts(blogEntries);
+  const internalBlogEntries = publishedEntries.filter(entry => !entry.data.externalUrl);
   return internalBlogEntries.map(entry => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
-<BlogPost 
+<BlogPost
   title={entry.data.title}
   description={entry.data.description}
   pubDate={entry.data.pubDate}
+  modDate={entry.data.modDate}
   tags={entry.data.tags}
-  image={entry.data.image}
+  ogImage={entry.data.ogImage}
+  canonicalURL={entry.data.canonicalURL}
+  body={entry.body}
 >
   <Content />
 </BlogPost>

@@ -2,19 +2,22 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BaseHead from '../components/BaseHead.astro';
+import { SITE } from '../config';
 
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
 }
 
-const { title, description = "Kavindu Jayarathne's personal website - Computer Science enthusiast who loves to build and break things" } = Astro.props;
+const { title, description = SITE.description, ogImage, canonicalURL } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} image={ogImage} canonicalURL={canonicalURL} />
   </head>
   <body>
     <div class="container">
@@ -28,37 +31,39 @@ const { title, description = "Kavindu Jayarathne's personal website - Computer S
 </html>
 
 <style is:global>
+  /* ── Variables ── */
   :root {
     --background-color: #030d13;
     --text-color: #ffffff;
     --accent-color: #64ffda;
     --secondary-color: #8892b0;
-    --header-height: 80px;
-    --section-padding: 1.5rem 0;
-    
-    /* Card and UI element backgrounds */
-    --card-bg: rgba(255, 255, 255, 0.05);
-    --card-hover-bg: rgba(255, 255, 255, 0.08);
+    --border-color: rgba(255, 255, 255, 0.1);
     --tag-bg: rgba(100, 255, 218, 0.1);
     --tag-hover-bg: rgba(100, 255, 218, 0.2);
-    
-    /* Transition for theme switching */
     --transition-speed: 0.3s;
+
+    --fs-xs:      0.75rem;
+    --fs-sm:      0.8rem;
+    --fs-meta:    0.875rem;
+    --fs-base:    1rem;
+    --fs-lg:      1.1rem;
+    --fs-xl:      1.125rem;
+    --fs-2xl:     1.25rem;
+    --fs-3xl:     1.5rem;
+    --fs-4xl:     1.8rem;
+    --fs-logo:    3rem;
+    --fs-display: 6rem;
   }
 
-  html.light-theme {
+  html[data-theme="light"] {
     --background-color: #faf0d2;
     --text-color: #212529;
     --secondary-color: #495057;
     --accent-color: black;
-    
-    /* Card and UI element backgrounds for light theme */
-    --card-bg: #ffffff;
-    --card-hover-bg: #f1f3f5;
-    --tag-bg: rgba(13, 110, 253, 0.1);
-    --tag-hover-bg: rgba(13, 110, 253, 0.2);
+    --border-color: rgba(0, 0, 0, 0.15);
   }
 
+  /* ── Reset & Base ── */
   * {
     margin: 0;
     padding: 0;
@@ -66,7 +71,7 @@ const { title, description = "Kavindu Jayarathne's personal website - Computer S
   }
 
   html {
-    font-family: 'Poppins','Times New Roman', Times, serif;
+    font-family: var(--font-google-sans-code);
     background-color: var(--background-color);
     color: var(--text-color);
     scroll-behavior: smooth;
@@ -75,36 +80,8 @@ const { title, description = "Kavindu Jayarathne's personal website - Computer S
   }
 
   body {
-    transition: background-color var(--transition-speed) ease, 
+    transition: background-color var(--transition-speed) ease,
                 color var(--transition-speed) ease;
-  }
-
-  .container {
-    /* width: 100%; */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
-  main {
-    flex: 1;
-    padding: var(--section-padding);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .content-container {
-    max-width: 800px;
-    padding: var(--section-padding);
-  }
-
-  main > .align-top {
-    margin-bottom: auto;
   }
 
   a {
@@ -117,36 +94,114 @@ const { title, description = "Kavindu Jayarathne's personal website - Computer S
     color: var(--accent-color);
   }
 
+  h1 { font-size: var(--fs-4xl); font-weight: 600; }
+  h2 { font-size: var(--fs-3xl); font-weight: 600; }
+  h3 { font-size: var(--fs-2xl); font-weight: 600; }
+  h4 { font-size: var(--fs-xl); font-weight: 600; }
+
   img {
     display: block;
     max-width: 100%;
     height: auto;
   }
 
-  /* Apply transitions to common elements */
+  /* Theme transition for common elements */
   h1, h2, h3, h4, h5, h6, p, span, div, button, input, textarea, select, li {
-    transition: color var(--transition-speed) ease, 
+    transition: color var(--transition-speed) ease,
                 background-color var(--transition-speed) ease,
                 border-color var(--transition-speed) ease;
   }
 
-  /* Apply transitions to specific UI elements */
-  .tag, .project-card, .blog-item, .project-link, button {
-    transition: background-color var(--transition-speed) ease, 
-                color var(--transition-speed) ease,
-                transform var(--transition-speed) ease,
-                border-color var(--transition-speed) ease,
-                box-shadow var(--transition-speed) ease;
+  /* ── Layout ── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 
-  /* Responsive font sizes */
+  main {
+    flex: 1;
+    padding: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main > .align-top {
+    margin-bottom: auto;
+  }
+
+  .content-container {
+    max-width: 800px;
+    padding: 1.5rem 0;
+  }
+
+  /* ── Utilities ── */
+
+  /* Italic subtitle under page headers */
+  .tagline {
+    font-size: var(--fs-base);
+    font-style: italic;
+    color: var(--secondary-color);
+  }
+
+  /* Empty state placeholder */
+  .coming-soon {
+    font-size: var(--fs-base);
+    line-height: 1.8;
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  /* Directional link with arrow icon */
+  .arrow-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: 2rem;
+    color: var(--accent-color);
+    font-size: var(--fs-base);
+  }
+
+  .arrow-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Dashed underline links inside prose content */
+  .prose a:not(.tag) {
+    color: var(--accent-color);
+    border-bottom: 1px dashed var(--accent-color);
+    transition: border-bottom-style var(--transition-speed) ease;
+  }
+
+  .prose a:not(.tag):hover {
+    border-bottom-style: solid;
+  }
+
+  /* ── Responsive ── */
   @media (max-width: 768px) {
+    :root {
+      --fs-4xl:  1.5rem;
+      --fs-3xl:  1.35rem;
+      --fs-2xl:  1.15rem;
+    }
+
     html {
       font-size: 15px;
     }
   }
 
   @media (max-width: 480px) {
+    :root {
+      --fs-logo: 2rem;
+    }
+
     html {
       font-size: 14px;
     }
@@ -154,22 +209,17 @@ const { title, description = "Kavindu Jayarathne's personal website - Computer S
     .container {
       padding: 0 1rem;
     }
-    
-    :root {
-      --section-padding: 1rem 0;
+
+    main {
+      padding: 1rem 0;
+    }
+
+    .content-container {
+      padding: 1rem 0;
     }
   }
 </style>
 
 <script>
-  // Theme persistence for transitions
-  document.addEventListener('astro:after-swap', () => {
-    // Apply theme after page transition
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      document.documentElement.classList.add('light-theme');
-    } else {
-      document.documentElement.classList.remove('light-theme');
-    }
-  });
+  import '../scripts/theme';
 </script>

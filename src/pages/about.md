@@ -6,19 +6,18 @@ description:
   things.
 ---
 
-## Hello, I'm Kavindu
+# Hey, I'm Kavindu
 
 This is my personal timeline, a collection of everything I’ve explored, struggled with, built, and
 understood in my own way. This includes four chapters that reflect how it all began for me. They
 don’t capture everything I’ll ever learn, but they shaped the foundation. What comes next will be
 built on top of this.
 
-## Chapter 1
+## University Life
 
-Chapter one starts from the university. University was my starting point for all kind of computer
-related things. I first started with Java. That was the first programming language I learnt. Back
-then, I had just started. I didn’t even know what programming was, let alone the languages. But I
-kept going.
+University was my starting point for all kinds of computer related things. I first started with
+Java. I didn’t even know what programming was back then, let alone the different languages out
+there. But I kept going.
 
 I came across these fundamental concepts of programming through university modules like Data
 Structures and Algorithms (DSA), Object-Oriented Programming (OOP), Design Patterns, Software
@@ -35,8 +34,8 @@ two numbers) using a salt, and then created another script to brute-force and ma
 task gave me a lot of insights.
 
 It was where I first started to understand how password security works. I realized that hashing is a
-one way process that you can’t reverse it like encryption. So instead of decrypting, you have to
-guess and hash again to see if it matches.
+one-way process that you can’t reverse like encryption. So instead of decrypting, you have to guess
+and hash again to see if it matches.
 
 Another thing I realized was about how we, as beginner web developers, usually handle login pages.
 We often just store raw passwords in the database and write logic to check if the typed password
@@ -62,13 +61,12 @@ but I still managed to complete the project.
 
 University was the place where I was exposed to most of the fundamental concepts and technologies.
 That was where I began to love computer science and developed a strong enthusiasm for it. I finally
-graduated with First Class Honours in Computer Science (Software Engineering). This is the end of
-Chapter One.
+graduated with First Class Honours in Computer Science (Software Engineering).
 
-## Chapter 2
+## The Curious Mind That Explores
 
-Chapter Two starts with an exploring mind. Like I said before, during university I was exposed to
-different domains in computer science. I wanted to start from somewhere, so I chose web development.
+Like I said before, during university I was exposed to different domains in computer science. I
+wanted to start from somewhere, so I chose web development.
 
 At the beginning, it was pretty overwhelming with all the technologies out there. But I just started
 with HTML, CSS, and JavaScript, building simple projects without jumping straight into frameworks,
@@ -96,19 +94,9 @@ But going through that helped me a lot. It gave me a better understanding of mod
 why they exist. That experience became the training for me to pick the right tool at the right time,
 but with a solid understanding of how things work underneath.
 
-So I kept learning.
+## Moving to macOS
 
-And then out of nowhere I broke my laptop. I don’t know whether to call it a good thing or a bad
-thing. You will find the reason for that doubt in the next chapter.
-
-But with that, Chapter Two of my journey comes to an end.
-
-## Chapter 3
-
-I had the opportunity to move to a MacBook. It was my first time using macOS. So this is the
-beginning of Chapter Three.
-
-macOS is built on top of UNIX foundations. Unix and Linux are quite similar in structure. I started
+macOS is built on top of Unix foundations. Unix and Linux are quite similar in structure. I started
 learning about Unix/Linux commands, file structure (there are some differences between Unix and
 Linux when it comes to the file structure, but mostly it’s similar), and I ended up spending most of
 my time in the terminal. I got super comfortable with it and became familiar with most of the
@@ -128,23 +116,20 @@ environment variables under different shell settings, and a lot more.
 
 Finally, I built an entire development environment for myself with all the tools, scripts, and
 configurations, and managed to write full documentation for the repository and pushed it to GitHub.
-[Click Here](https://github.com/kavindujayarathne/dotfiles) to check out my dotfiles.
+Check out [my dotfiles on GitHub](https://github.com/kavindujayarathne/dotfiles).
 
 I took a big shift here by replacing VS Code with Neovim, which is a terminal-based,
 keyboard-centric editor, as my main IDE. This is where I became familiar with the Lua programming
 language. All the configuration in my Neovim setup was written using Lua and followed its
 modularization approach. That was also another experience I had.
 
-A development environment is highly based on a keyboard-centric approach. It has a large ecosystem
-with so many tools and applications. All these things have been developed to use common keyboard
-navigations. That’s why I used the word ecosystem. In order to be efficient and comfortable with the
-tools and settings inside a development environment, you should be good at touch typing, which I was
-able to master during my university time. Otherwise, it’s not going to work.
+The kind of development environment I built is heavily keyboard-centric. It relies on terminal-based
+tools, tiling window managers, and keyboard-driven navigation across the entire workflow. That’s why
+I used the word ecosystem. Everything is connected through common keybindings and patterns.
 
-The other thing was, for tools inside a development environment, there are no graphical user
-interfaces. So we have to define their behavior as code inside configuration files. Even though I
-mentioned them as code, these are more like structured data that define the settings, key bindings,
-and behavior options.
+In this world, there are no graphical user interfaces. Every tool’s behavior is defined as code
+inside configuration files. Even though I call them code, these are more like structured data that
+define the settings, key bindings, and behavior options.
 
 Throughout this experience, I got some important insights.
 
@@ -154,10 +139,10 @@ them, because at that time I had written so many configuration files for differe
 dev environment.
 
 Later on, when I was exposed to DevOps tools and concepts like Terraform, Ansible and similar tools,
-I came across the term Infrastructure as Code (IaC), and I immediately clicked with it. It felt like
-an extension of what I was already doing, defining the behavior of different tools using
-configuration files. It was like I was unknowingly practicing some DevOps practices. That could also
-be a reason for my tendency towards DevOps.
+I came across the term Infrastructure as Code (IaC), and it immediately clicked. It felt like an
+extension of what I was already doing, defining the behavior of different tools using configuration
+files. It was like I was unknowingly practicing some DevOps practices. That could also be a reason
+for my tendency towards DevOps.
 
 I’ve tried to understand Docker containerization concepts before, but it didn’t work, and I didn’t
 really get the real use case of them. This was the moment when I finally got a clear idea about
@@ -167,24 +152,22 @@ And in most places where we need to configure things, like in web development to
 configuration files. So it was a great experience that I had to work with them throughout the
 process of building my dev environment.
 
-Before I wrap up this chapter, I should mention this as well, I created a structured note system
-using Notion that works as a second brain for all my dev-related work. Important keybindings related
-to different tools, code snippets, some commands, notes and sketches I take, different concepts that
-I learn, and so many other things have been documented there for ease of work in a structured
-manner.
+Meanwhile, I created a structured note system that works as a second brain for all my dev-related
+work. Important keybindings related to different tools, code snippets, some commands, notes and
+sketches I take, different concepts that I learn, and so many other things have been documented
+there for ease of work in a structured manner.
+
+Take this as a tip: taking notes saves a lot of time and makes it easier when you're working with
+multiple concepts at the same time, helping reduce the clutter.
 
 This chapter was mostly about building a core structure for myself that would support me in the long
 run. And it helped me to grasp some common patterns in computer science and how the same strategy
 has been applied in different places.
 
-This is one of the main chapters of my journey where I learned a ton of things. With that, I mark
-the end of this chapter.
+## Into Networking
 
-## Chapter 4
-
-Chapter Four starts with the idea of learning about domains. I started digging into domains and
-subdomains, and then I came across DNS, DNS providers, DNS resolvers, DNS records, authoritative
-name servers, domain registrars, and so on.
+I started digging into domains and subdomains, and then I came across DNS, DNS providers, DNS
+resolvers, DNS records, authoritative name servers, domain registrars, and so on.
 
 This was where I learned about pointing the apex domain to the IP address of a server using an ‘A’
 DNS record, and pointing the ‘www’ subdomain to a server using a 'CNAME' record, those kinds of DNS
@@ -201,9 +184,9 @@ understanding things like IP addressing, DHCP servers, MAC addresses, ARP, routi
 ports, port forwarding, VPN, Proxy, Proxychains, protocols, and how everything fits together across
 all the network layers from the physical layer up to the application layer.
 
-After that, I created a cybersecurity lab using a hypervisor, where I set up multiple virtual
-machines to simulate real world networking scenarios, including user machines, a software-based
-router like pfSense, a Ubuntu server, some Active Directory setups, and things like that.
+After that, I created a virtual Homelab where I set up multiple virtual machines to simulate real
+world networking scenarios. This included designing vulnerable networks, collecting telemetry,
+practicing attack and defense techniques, and running investigations and experiments.
 
 Networking is the best way to understand how everything is connected throughout the internet, and
 how the internet actually works.
@@ -211,12 +194,10 @@ how the internet actually works.
 The knowledge I gained through all those networking experiences has helped me a lot ever since I
 learned them, especially when it comes to connecting the dots and seeing the bigger picture.
 
-This is the end of the last chapter.
+## Final Words to the World
 
-## Final words to the world
-
-I appreciate it if you’re reading this far. These chapters mark the major milestones that define how
-it all began for me, and it’s not the end. I believe this will be the backbone for the rest of my
+I appreciate it if you’ve read this far. These chapters mark the major milestones that define how it
+all began for me, and it’s not the end. I believe this will be the backbone for the rest of my
 journey in computer science.
 
 What I want to say at the end is, keep loving what you’re doing. Sometimes in life, you might be
@@ -225,4 +206,5 @@ passion toward it. That will eventually help you create an opportunity to do wha
 life.
 
 **Thank you**  
+March 25, 2025  
 _Kavindu Jayarathne_

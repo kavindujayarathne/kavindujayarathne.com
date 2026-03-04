@@ -1,8 +1,6 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-// @ts-ignore
-// import rehypeFigure from 'rehype-figure';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,21 +8,26 @@ export default defineConfig({
   site: 'https://kavindujayarathne.com',
   integrations: [sitemap()],
   markdown: {
-    // shikiConfig: {
-    //   theme: 'github-dark-default',
-    // },
     syntaxHighlight: 'shiki',
-    // shikiConfig: {
-    //   // For more themes, visit https://shiki.style/themes
-    //   themes: { light: 'min-light', dark: 'night-owl' },
-    //   wrap: true,
-    // },
-    // remarkPlugins: [],
-    // rehypePlugins: [],
-    // image: {
-    //   // Used for all Markdown images; not configurable per-image
-    //   // Used for all `<Image />` and `<Picture />` components unless overridden with a prop
-    //   experimentalLayout: 'responsive',
-    // },
+  },
+  experimental: {
+    fonts: [
+      {
+        name: 'Google Sans Code',
+        cssVariable: '--font-google-sans-code',
+        provider: fontProviders.google(),
+        fallbacks: ['monospace'],
+        weights: [300, 400, 500, 600, 700],
+        styles: ['normal', 'italic'],
+      },
+      {
+        name: 'Caveat',
+        cssVariable: '--font-caveat',
+        provider: fontProviders.google(),
+        fallbacks: ['cursive'],
+        weights: [400, 500, 600, 700],
+        styles: ['normal'],
+      },
+    ],
   },
 });

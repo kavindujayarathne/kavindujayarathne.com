@@ -1,15 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+import LeftArrowIcon from '../assets/icons/LeftArrowIcon.svg?raw';
 ---
 
-<Layout title="404: Page Not Found | Kavindu Jayarathne" description="The page you're looking for doesn't exist.">
+<Layout title={`404: Page Not Found | ${SITE.title}`} description="The page you're looking for doesn't exist.">
   <div class="error-page content-container">
     <div>
       <h1>404</h1>
       <h2>Page Not Found</h2>
       <p>The page you're looking for doesn't exist or has been moved.</p>
-      <a href="/" class="back-link">
-        ← Back to home
+      <a href="/" class="arrow-link">
+        <Fragment set:html={LeftArrowIcon} /> Back to home
       </a>
     </div>
   </div>
@@ -21,7 +23,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   h1 {
-    font-size: 6rem;
+    font-size: var(--fs-display);
     font-weight: 700;
     color: var(--accent-color);
     margin: 0;
@@ -30,26 +32,15 @@ import Layout from '../layouts/Layout.astro';
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: var(--fs-4xl);
     color: var(--text-color);
     margin: 1rem 0;
   }
 
   p {
-    font-size: 1.1rem;
+    font-size: var(--fs-base);
     color: var(--secondary-color);
     margin-bottom: 2rem;
   }
 
-  .back-link {
-    display: inline-block;
-    color: var(--secondary-color);
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color var(--transition-speed) ease;
-  }
-
-  .back-link:hover {
-    color: var(--accent-color);
-  }
 </style>

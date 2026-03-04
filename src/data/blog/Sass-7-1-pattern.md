@@ -5,6 +5,6 @@ description:
   modern module system, and some useful Sass functions and setups I personally use like rem/em
   converters and a constants map setup. I hope this will help you structure your Sass environment...'
 pubDate: '2024-07-10'
-tags: ['Web Dev', 'Sass', 'Frontend']
+tags: ['Web Development', 'Sass', 'Frontend']
 externalUrl: 'https://www.linkedin.com/pulse/7-1-patternarchitecture-sass-kavindu-jayarathne-mcfcf'
 ---

@@ -1,0 +1,120 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, getReadingTime, slugifyTag } from '../utils';
+import ExternalLinkIcon from '../assets/icons/ExternalLinkIcon.svg?raw';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  headingTag?: 'h2' | 'h3';
+  activeTag?: string;
+}
+
+const { post, headingTag: Tag = 'h2', activeTag } = Astro.props;
+const formattedDate = formatDate(new Date(post.data.pubDate));
+const formattedModDate = post.data.modDate ? formatDate(post.data.modDate) : null;
+const readingTime = !post.data.externalUrl ? getReadingTime(post.body ?? '') : null;
+const href = post.data.externalUrl || `/blogs/${post.id}`;
+---
+
+<li class="blog-item">
+  <article>
+    <Tag class="blog-title">
+      <a
+        href={href}
+        target={post.data.externalUrl ? "_blank" : undefined}
+        rel={post.data.externalUrl ? "noopener noreferrer" : undefined}
+      >
+        {post.data.title}
+        {post.data.externalUrl && (
+          <span class="external-link-icon" aria-hidden="true"><Fragment set:html={ExternalLinkIcon} /></span>
+        )}
+      </a>
+    </Tag>
+    <div class="blog-meta">
+      <span class="blog-date"><time>{formattedDate}</time>{readingTime && (<><span class="separator">&bull;</span><span>{readingTime}</span></>)}</span>
+      {formattedModDate && (
+        <span class="blog-updated">Updated: <time>{formattedModDate}</time></span>
+      )}
+    </div>
+    <p class="blog-description">{post.data.description}</p>
+    <div class="blog-tags">
+      {post.data.tags.map(tag => (
+        <a
+          href={`/tags/${slugifyTag(tag)}`}
+          class:list={['tag', { active: activeTag && tag.toLowerCase() === activeTag.toLowerCase() }]}
+        >
+          {tag}
+        </a>
+      ))}
+    </div>
+  </article>
+</li>
+
+<style>
+  .blog-title {
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .external-link-icon {
+    display: inline-block;
+    vertical-align: super;
+    opacity: 0.7;
+    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+  }
+
+  .blog-title a:hover .external-link-icon {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+
+  .blog-meta {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--fs-meta);
+    color: var(--secondary-color);
+    margin-top: 0.25rem;
+    gap: 0.1rem;
+  }
+
+  .blog-updated {
+    font-style: italic;
+  }
+
+  .separator {
+    margin: 0 0.4rem;
+    font-weight: bold;
+  }
+
+  .blog-description {
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    color: var(--secondary-color);
+    margin-top: 0.5rem;
+  }
+
+  .blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .tag {
+    font-size: var(--fs-sm);
+    background-color: var(--tag-bg);
+    color: var(--accent-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color var(--transition-speed) ease;
+  }
+
+  .tag:hover {
+    background-color: var(--tag-hover-bg);
+  }
+
+  .tag.active {
+    background-color: var(--tag-hover-bg);
+    font-weight: 600;
+  }
+</style>

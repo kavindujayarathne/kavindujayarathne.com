@@ -1,40 +1,24 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import BlogPostTitleLink from '../../components/BlogPostTitleLink.astro';
+import BlogListItem from '../../components/BlogListItem.astro';
+import { SITE } from '../../config';
+import { getSortedPosts } from '../../utils';
 
 const allBlogPosts = await getCollection('blog');
-const sortedPosts = allBlogPosts.sort(
-  (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-);
+const sortedPosts = getSortedPosts(allBlogPosts);
 ---
 
-<Layout title="Blog | Kavindu Jayarathne" description="Read Kavindu Jayarathne's blog posts about computer science, programming, and technology.">
-  <div class="content-container">
+<Layout title={`Blog | ${SITE.title}`} description={SITE.blogDescription}>
+  <div class="content-container align-top">
+    <div class="page-header">
+      <h1>Blogs</h1>
+      <p class="tagline">Writings on things I've explored and understood</p>
+    </div>
     {sortedPosts.length > 0 ? (
-      <ul class="blog-list"> {sortedPosts.map(post => (
-          <li class="blog-item">
-            <article>
-              <div class="blog-header">
-                <BlogPostTitleLink 
-                  title={post.data.title}
-                  slug={post.slug}
-                  externalUrl={post.data.externalUrl}
-                />
-                <time class="blog-date">{new Date(post.data.pubDate).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}</time>
-              </div>
-              <p class="blog-excerpt">{post.data.description}</p>
-              <div class="blog-tags">
-                {post.data.tags.map(tag => (
-                  <a href={`/tags/${tag.toLowerCase()}`} class="tag">{tag}</a>
-                ))}
-              </div>
-            </article>
-          </li>
+      <ul class="blog-list">
+        {sortedPosts.map(post => (
+          <BlogListItem post={post} />
         ))}
       </ul>
     ) : (
@@ -46,6 +30,16 @@ const sortedPosts = allBlogPosts.sort(
 </Layout>
 
 <style>
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .page-header h1 {
+    font-style: italic;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+  }
+
   .blog-list {
     list-style: none;
     padding: 0;
@@ -54,54 +48,4 @@ const sortedPosts = allBlogPosts.sort(
     gap: 2rem;
   }
 
-  .blog-item {
-    margin-bottom: 0.5rem;
-  }
-
-  .blog-header {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0.5rem;
-  }
-
-  .blog-date {
-    font-size: 0.9rem;
-    color: var(--secondary-color);
-    margin-top: 0.25rem;
-  }
-
-  .blog-excerpt {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--secondary-color);
-    margin: 0.5rem 0;
-  }
-
-  .blog-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
-  }
-
-  .tag {
-    font-size: 0.8rem;
-    background-color: rgba(100, 255, 218, 0.1);
-    color: var(--accent-color);
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-
-  .tag:hover {
-    background-color: rgba(100, 255, 218, 0.2);
-  }
-
-  .coming-soon {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--secondary-color);
-    text-align: center;
-    padding: 3rem 0;
-  }
 </style>

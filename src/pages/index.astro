@@ -1,52 +1,76 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import BlogListItem from '../components/BlogListItem.astro';
+import { SITE } from '../config';
+import { getSortedPosts } from '../utils';
+import RightArrowIcon from '../assets/icons/RightArrowIcon.svg?raw';
+
+const sortedPosts = getSortedPosts(await getCollection('blog')).slice(0, 5);
 ---
-<Layout title="Kavindu Jayarathne | Personal Website">
-  <div class="content-container">
-    <div class="hero-content">
-      <div class="profile-image">
-        <img src="/splash_low.png" alt="Kavindu Jayarathne" />
+<Layout title={SITE.title}>
+  <div class="content-container align-top">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="profile-image">
+          <img src={SITE.ogImage} alt={SITE.author} />
+        </div>
+        <div class="intro-text">
+          <h1>Hey, Welcome!</h1>
+          <p>
+            My name is <span class="highlight">Kavindu</span>.<br />
+            I build things, break things, build things that breaks things.
+          </p>
+        </div>
       </div>
-      <div class="intro-text">
-        <h1>Hey, Welcome!</h1>
-        <p>
-          My name is <span class="highlight">Kavindu</span>.<br />
-          I build things, break things, build things that breaks things.
-        </p>
-      </div>
-    </div>
+    </section>
+
+    {sortedPosts.length > 0 && (
+      <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="blog-list">
+          {sortedPosts.map(post => (
+            <BlogListItem post={post} headingTag="h3" />
+          ))}
+        </ul>
+        <a href="/blogs" class="arrow-link">All Posts <Fragment set:html={RightArrowIcon} /></a>
+      </section>
+    )}
   </div>
 </Layout>
 
 <style>
+  .hero {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
   .hero-content {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 4rem;
+    gap: 2rem;
     text-align: left;
   }
 
   .profile-image {
-    max-width: 300px;
+    flex-shrink: 0;
+    width: 180px;
   }
 
   .profile-image img {
     width: 100%;
     height: auto;
+    display: block;
   }
 
   .intro-text h1 {
-    /* font-size: 2.5rem; */
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
+    margin-bottom: 0.4rem;
   }
 
   .intro-text p {
-    /* font-size: 1.2rem; */
-    font-size: 1rem;
+    font-size: var(--fs-base);
     line-height: 1.6;
     color: var(--secondary-color);
   }
@@ -56,24 +80,30 @@ import Layout from '../layouts/Layout.astro';
     font-weight: 600;
   }
 
+  .recent-posts h2 {
+    font-style: italic;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+  }
+
+  .blog-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
   /* Mobile */
   @media (max-width: 768px) {
     .hero-content {
       flex-direction: column;
       text-align: center;
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     .profile-image {
-      max-width: 200px;
-    }
-
-    .intro-text h1 {
-      font-size: 2rem;
-    }
-
-    .intro-text p {
-      font-size: 1.1rem;
+      width: 140px;
     }
   }
 </style>

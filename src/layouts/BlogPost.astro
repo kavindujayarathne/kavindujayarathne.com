@@ -1,37 +1,42 @@
 ---
 import Layout from './Layout.astro';
+import { SITE } from '../config';
+import { formatDate, getReadingTime, slugifyTag } from '../utils';
 
 interface Props {
   title: string;
   description: string;
   pubDate: Date;
+  modDate?: Date | null;
   tags: string[];
+  ogImage?: string;
+  canonicalURL?: string;
+  body?: string;
 }
 
-const { title, description, pubDate, tags } = Astro.props;
-const formattedPubDate = pubDate.toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
+const { title, description, pubDate, modDate, tags, ogImage, canonicalURL, body } = Astro.props;
+const formattedPubDate = formatDate(pubDate);
+const formattedModDate = modDate ? formatDate(modDate) : undefined;
+const readingTime = body ? getReadingTime(body) : undefined;
 ---
 
-<Layout title={`${title} | Kavindu Jayarathne`} description={description}>
+<Layout title={`${title} | ${SITE.title}`} description={description} ogImage={ogImage} canonicalURL={canonicalURL}>
   <div class="content-container blog-container align-top">
-    <article class="blog-content">
+    <article class="blog-content prose" data-pagefind-body>
       <header>
         <h1>{title}</h1>
-        <div class="metadata">
-          <time datetime={pubDate.toISOString()}>{formattedPubDate}</time>
-          <div class="tags">
-            {
-              tags.map(tag => (
-                <a href={`/tags/${tag.toLowerCase()}`} class="tag">
-                  {tag}
-                </a>
-              ))
-            }
-          </div>
+        <div class="blog-meta">
+          <span class="blog-date"><time datetime={pubDate.toISOString()}>{formattedPubDate}</time>{readingTime && (<><span class="separator">&bull;</span><span>{readingTime}</span></>)}</span>
+          {formattedModDate && (
+            <span class="blog-updated">Updated: <time datetime={modDate!.toISOString()}>{formattedModDate}</time></span>
+          )}
+        </div>
+        <div class="blog-tags">
+          {tags.map(tag => (
+            <a href={`/tags/${slugifyTag(tag)}`} class="tag">
+              {tag}
+            </a>
+          ))}
         </div>
       </header>
       <div class="content">
@@ -42,68 +47,7 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
 </Layout>
 
 <script>
-  function setupCodeBlocks() {
-    document.querySelectorAll('pre').forEach(pre => {
-      // Create copy button
-      const copyButton = document.createElement('button');
-      copyButton.className = 'copy-button';
-      copyButton.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-        </svg>
-      `;
-      copyButton.setAttribute('aria-label', 'Copy code');
-      copyButton.setAttribute('title', 'Copy code');
-
-      // Create wrapper for the pre element
-      const wrapper = document.createElement('div');
-      wrapper.className = 'code-block-wrapper';
-
-      // Insert wrapper before pre
-      pre.parentNode?.insertBefore(wrapper, pre);
-
-      // Move pre into wrapper
-      wrapper.appendChild(pre);
-
-      // Add copy button to wrapper
-      wrapper.appendChild(copyButton);
-
-      // Add copy functionality
-      copyButton.addEventListener('click', async () => {
-        const code = pre.querySelector('code')?.textContent || '';
-
-        try {
-          await navigator.clipboard.writeText(code);
-          copyButton.classList.add('copied');
-          copyButton.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          `;
-
-          // Reset button after 2 seconds
-          setTimeout(() => {
-            copyButton.classList.remove('copied');
-            copyButton.innerHTML = `
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-              </svg>
-            `;
-          }, 2000);
-        } catch (err) {
-          console.error('Failed to copy code:', err);
-        }
-      });
-    });
-  }
-
-  // Setup on initial load
-  setupCodeBlocks();
-
-  // Setup after Astro transitions
-  document.addEventListener('astro:after-swap', setupCodeBlocks);
+  import '../scripts/copy-code';
 </script>
 
 <style>
@@ -112,9 +56,6 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   }
 
   .blog-content {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* flex: 1; */
     min-width: 0;
     width: 100%;
   }
@@ -124,43 +65,49 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   }
 
   h1 {
-    font-size: clamp(2rem, 5vw, 2rem);
     margin-bottom: 0.5rem;
     color: var(--accent-color);
   }
 
-  .metadata {
+  .blog-meta {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  time {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--secondary-color);
+    gap: 0.1rem;
   }
 
-  .tags {
+  .blog-updated {
+    font-style: italic;
+  }
+
+  .separator {
+    margin: 0 0.4rem;
+    font-weight: bold;
+  }
+
+  .blog-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-top: 0.75rem;
   }
 
   .tag {
-    font-size: 0.8rem;
-    background-color: rgba(100, 255, 218, 0.1);
+    font-size: var(--fs-sm);
+    background-color: var(--tag-bg);
     color: var(--accent-color);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-speed) ease;
   }
 
   .tag:hover {
-    background-color: rgba(100, 255, 218, 0.2);
+    background-color: var(--tag-hover-bg);
   }
 
   .content {
-    font-size: 1.1rem;
+    font-size: var(--fs-lg);
     line-height: 1.8;
     color: var(--secondary-color);
     width: 100%;
@@ -168,7 +115,6 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
 
   /* Content styles */
   .content :global(h2) {
-    font-size: 1.8rem;
     margin: 1rem 0 1.5rem;
     color: var(--text-color);
     scroll-margin-top: 100px;
@@ -187,14 +133,12 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   }
 
   .content :global(h3) {
-    font-size: 1.5rem;
     margin: 2.5rem 0 1rem;
     color: var(--text-color);
     scroll-margin-top: 100px;
   }
 
   .content :global(h4) {
-    font-size: 1.3rem;
     margin: 2rem 0 0.8rem;
     color: var(--text-color);
     scroll-margin-top: 100px;
@@ -214,7 +158,7 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   }
 
   .content :global(code:not(pre code)) {
-    font-family: 'Fira Code', monospace;
+    font-family: var(--font-google-sans-code);
     font-size: 0.9em;
     background-color: rgba(100, 255, 218, 0.1);
     color: var(--accent-color);
@@ -242,8 +186,8 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   }
 
   .content :global(pre code) {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
+    font-family: var(--font-google-sans-code);
+    font-size: var(--fs-meta);
     line-height: 1.6;
     display: block;
     color: #e6e6e6;
@@ -295,7 +239,6 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
     border-left: 4px solid var(--accent-color);
     padding: 0.8rem 1.2rem;
     margin: 1.5rem 0;
-    /* background-color: rgba(100, 255, 218, 0.05); */
     border-radius: 0 4px 4px 0;
   }
 
@@ -322,20 +265,9 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   .content :global(img + em) {
     display: block;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: var(--fs-meta);
     color: var(--secondary-color);
     margin-bottom: 2rem;
-  }
-
-  .content :global(a) {
-    color: var(--accent-color);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--accent-color);
-    transition: border-bottom-style 0.3s ease;
-  }
-
-  .content :global(a:hover) {
-    border-bottom-style: solid;
   }
 
   .content :global(u) {
@@ -347,14 +279,6 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   @media (max-width: 768px) {
     .blog-container {
       padding: 1rem;
-    }
-
-    h1 {
-      font-size: 1.8rem;
-    }
-
-    .content {
-      font-size: 1rem;
     }
   }
 </style>

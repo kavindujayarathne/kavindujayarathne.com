@@ -108,7 +108,7 @@ In case you ever wanted to do some modification to some of the settings, you kno
 in Webpack, or it could be Babel, or it could be any other thing, First, you have to run the below
 command to eject the config files…
 
-```JavaScript
+```javascript
 npm run eject
 
 ```

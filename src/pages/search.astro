@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+import '@pagefind/default-ui/css/ui.css';
+---
+
+<Layout title={`Search | ${SITE.title}`} description="Search blog posts and projects.">
+  <div class="content-container align-top search-container">
+    <div class="page-header">
+      <h1>Search</h1>
+      <p class="tagline">Find posts and projects</p>
+    </div>
+    <div id="pagefind-search"></div>
+    {import.meta.env.DEV && (
+      <p class="dev-warning">
+        Search is only available in production builds. Run <code>npm run build && npm run preview</code> to test search.
+      </p>
+    )}
+  </div>
+</Layout>
+
+<script>
+  import '../scripts/search';
+</script>
+
+<style>
+  .search-container {
+    width: 100%;
+  }
+
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .page-header h1 {
+    font-style: italic;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+  }
+
+  .dev-warning {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px dashed var(--secondary-color);
+    border-radius: 6px;
+    color: var(--secondary-color);
+    font-size: var(--fs-meta);
+  }
+
+  .dev-warning code {
+    font-family: var(--font-google-sans-code);
+    font-size: 0.85em;
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--accent-color);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+  }
+
+  /* Theme Pagefind via its CSS variables */
+  #pagefind-search {
+    --pagefind-ui-scale: 0.8;
+    --pagefind-ui-primary: var(--accent-color);
+    --pagefind-ui-text: var(--text-color);
+    --pagefind-ui-background: var(--background-color);
+    --pagefind-ui-border: rgba(136, 146, 176, 0.2);
+    --pagefind-ui-tag: var(--tag-bg);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 6px;
+    --pagefind-ui-font: var(--font-google-sans-code);
+  }
+
+  #pagefind-search :global(.pagefind-ui__search-input) {
+    font-weight: 400;
+  }
+
+  #pagefind-search :global(.pagefind-ui__search-input:focus) {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+
+  #pagefind-search :global(.pagefind-ui__search-clear) {
+    color: var(--secondary-color);
+    background-color: var(--background-color);
+  }
+
+  #pagefind-search :global(.pagefind-ui__result-link) {
+    color: var(--accent-color);
+  }
+
+  #pagefind-search :global(.pagefind-ui__result-excerpt) {
+    color: var(--secondary-color);
+  }
+
+  #pagefind-search :global(.pagefind-ui__result) {
+    padding: calc(20px * var(--pagefind-ui-scale)) 0 calc(30px * var(--pagefind-ui-scale));
+  }
+
+  /* Remove the bold bottom border on last result */
+  #pagefind-search :global(.pagefind-ui__result:last-of-type) {
+    border-bottom: none;
+  }
+
+  #pagefind-search :global(.pagefind-ui__result-nested) {
+    padding-top: calc(12px * var(--pagefind-ui-scale));
+  }
+
+  #pagefind-search :global(.pagefind-ui__result-title) {
+    margin-bottom: calc(4px * var(--pagefind-ui-scale));
+  }
+
+  #pagefind-search :global(.pagefind-ui__message) {
+    color: var(--secondary-color);
+  }
+
+  #pagefind-search :global(.pagefind-ui__button) {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border-color: var(--accent-color);
+  }
+
+  #pagefind-search :global(.pagefind-ui__button:hover) {
+    background-color: transparent;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+
+  #pagefind-search :global(mark) {
+    background-color: rgba(100, 255, 218, 0.2);
+    color: var(--accent-color);
+  }
+
+</style>
