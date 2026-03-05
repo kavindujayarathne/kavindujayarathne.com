@@ -515,4 +515,4 @@ macpak is licensed under the
 
 [macpak Main Repository](https://github.com/kavindujayarathne/macpak)  
 [macpak Homebrew Tap Repository](https://github.com/kavindujayarathne/homebrew-macpak)  
-[Story Behind macpak](https://kavindujayarathhe/blogs/journey-of-my-first-cli-tool)
+[Story Behind macpak](https://kavindujayarathne.com/blogs/journey-of-macpak)
