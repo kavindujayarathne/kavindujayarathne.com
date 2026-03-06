@@ -3,6 +3,7 @@ title: 'macpak Documentation'
 description: 'The Documentation for macpak CLI tool'
 pubDate: '2025-10-04'
 tags: ['macpak', 'CLI', 'Documentation', 'Homebrew']
+ogImage: '/og-images/macpak.png'
 ---
 
 ![preview](../../assets/images/macpak-documentation/preview.png)

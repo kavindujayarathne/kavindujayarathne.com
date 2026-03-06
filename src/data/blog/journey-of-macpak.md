@@ -3,6 +3,7 @@ title: 'Journey of macpak'
 description: 'The story behind creating and publishing macpak, which is my first CLI tool'
 pubDate: '2025-10-05'
 tags: ['macpak', 'CLI', 'Homebrew']
+ogImage: '/og-images/macpak.png'
 ---
 
 ## Preview
