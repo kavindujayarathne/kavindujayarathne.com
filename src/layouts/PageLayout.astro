@@ -2,18 +2,21 @@
 import Layout from './Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import type { SchemaEntry } from '../components/StructuredData.astro';
 
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
   canonicalURL?: string;
+  ogType?: 'website' | 'article';
+  structuredData?: SchemaEntry[];
 }
 
-const { title, description, ogImage, canonicalURL } = Astro.props;
+const { title, description, ogImage, canonicalURL, ogType, structuredData } = Astro.props;
 ---
 
-<Layout title={title} description={description} ogImage={ogImage} canonicalURL={canonicalURL}>
+<Layout title={title} description={description} ogImage={ogImage} canonicalURL={canonicalURL} ogType={ogType} structuredData={structuredData}>
   <div class="container">
     <Header />
     <main>

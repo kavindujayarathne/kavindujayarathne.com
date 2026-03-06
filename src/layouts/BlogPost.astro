@@ -2,6 +2,7 @@
 import PageLayout from './PageLayout.astro';
 import { SITE } from '../config';
 import { formatDate, getReadingTime, slugifyTag } from '../utils';
+import type { SchemaEntry } from '../components/StructuredData.astro';
 
 interface Props {
   title: string;
@@ -18,9 +19,19 @@ const { title, description, pubDate, modDate, tags, ogImage, canonicalURL, body 
 const formattedPubDate = formatDate(pubDate);
 const formattedModDate = modDate ? formatDate(modDate) : undefined;
 const readingTime = body ? getReadingTime(body) : undefined;
+
+const structuredData: SchemaEntry[] = [{
+  type: 'BlogPosting',
+  title,
+  description,
+  pubDate,
+  modDate,
+  image: ogImage,
+  url: canonicalURL || new URL(`/blogs/${Astro.params.slug}`, SITE.website).href,
+}];
 ---
 
-<PageLayout title={`${title} | ${SITE.title}`} description={description} ogImage={ogImage} canonicalURL={canonicalURL}>
+<PageLayout title={`${title} | ${SITE.title}`} description={description} ogImage={ogImage} canonicalURL={canonicalURL} ogType="article" structuredData={structuredData}>
   <div class="content-container blog-container align-top">
     <article class="blog-content prose" data-pagefind-body>
       <header>

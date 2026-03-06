@@ -1,23 +1,30 @@
 ---
 import BaseHead from './BaseHead.astro';
+import StructuredData from '../components/StructuredData.astro';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import { SITE } from '../config';
+import type { SchemaEntry } from '../components/StructuredData.astro';
 
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
   canonicalURL?: string;
+  ogType?: 'website' | 'article';
+  structuredData?: SchemaEntry[];
 }
 
-const { title, description = SITE.description, ogImage, canonicalURL } = Astro.props;
+const { title, description = SITE.description, ogImage, canonicalURL, ogType, structuredData } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} image={ogImage} canonicalURL={canonicalURL} />
+    <BaseHead title={title} description={description} image={ogImage} canonicalURL={canonicalURL} ogType={ogType} />
+
+    <!-- Structured Data -->
+    {structuredData && <StructuredData schemas={structuredData} />}
 
     <!-- Umami Analytics -->
     <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="76376600-3d9d-4eb7-9b87-cf31853b44b0"></script>

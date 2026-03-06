@@ -1,0 +1,88 @@
+---
+import { SITE } from '../config';
+import { SOCIALS } from '../constants';
+
+export type BlogPostingSchema = {
+  type: 'BlogPosting';
+  title: string;
+  description: string;
+  pubDate: Date;
+  modDate?: Date | null;
+  image?: string;
+  url: string;
+};
+
+export type WebSiteSchema = {
+  type: 'WebSite';
+};
+
+export type PersonSchema = {
+  type: 'Person';
+};
+
+export type SchemaEntry = BlogPostingSchema | WebSiteSchema | PersonSchema;
+
+interface Props {
+  schemas: SchemaEntry[];
+}
+
+const { schemas } = Astro.props;
+
+const sameAs = SOCIALS
+  .filter(s => s.url !== '#')
+  .map(s => s.url);
+
+function buildSchema(entry: SchemaEntry) {
+  switch (entry.type) {
+    case 'BlogPosting':
+      return {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: entry.title,
+        description: entry.description,
+        datePublished: entry.pubDate.toISOString(),
+        ...(entry.modDate && { dateModified: entry.modDate.toISOString() }),
+        ...(entry.image && { image: new URL(entry.image, SITE.website).href }),
+        url: entry.url,
+        author: {
+          '@type': 'Person',
+          name: SITE.author,
+          url: SITE.website,
+        },
+        publisher: {
+          '@type': 'Person',
+          name: SITE.author,
+          url: SITE.website,
+        },
+      };
+
+    case 'WebSite':
+      return {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: SITE.title,
+        url: SITE.website,
+        description: SITE.description,
+        author: {
+          '@type': 'Person',
+          name: SITE.author,
+          url: SITE.website,
+        },
+      };
+
+    case 'Person':
+      return {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: SITE.author,
+        url: SITE.website,
+        description: SITE.description,
+        sameAs,
+      };
+  }
+}
+---
+
+{schemas.map(entry => (
+  <script type="application/ld+json" set:html={JSON.stringify(buildSchema(entry))} />
+))}

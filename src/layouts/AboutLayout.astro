@@ -1,10 +1,12 @@
 ---
 import PageLayout from './PageLayout.astro';
+import type { SchemaEntry } from '../components/StructuredData.astro';
 
 const { frontmatter } = Astro.props;
+const structuredData: SchemaEntry[] = [{ type: 'Person' }];
 ---
 
-<PageLayout title={frontmatter.title} description={frontmatter.description}>
+<PageLayout title={frontmatter.title} description={frontmatter.description} structuredData={structuredData}>
   <div class="content-container align-top">
     <article class="about prose">
       <slot />

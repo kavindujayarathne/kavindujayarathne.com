@@ -5,10 +5,12 @@ import BlogListItem from '../components/BlogListItem.astro';
 import { SITE } from '../config';
 import { getSortedPosts } from '../utils';
 import RightArrowIcon from '../assets/icons/RightArrowIcon.svg?raw';
+import type { SchemaEntry } from '../components/StructuredData.astro';
 
 const sortedPosts = getSortedPosts(await getCollection('blog')).slice(0, 5);
+const structuredData: SchemaEntry[] = [{ type: 'WebSite' }, { type: 'Person' }];
 ---
-<PageLayout title={SITE.title}>
+<PageLayout title={SITE.title} structuredData={structuredData}>
   <div class="content-container align-top">
     <section class="hero">
       <div class="hero-content">
