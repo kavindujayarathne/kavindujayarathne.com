@@ -1,16 +1,16 @@
 ---
-import Layout from './Layout.astro';
+import PageLayout from './PageLayout.astro';
 
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description}>
+<PageLayout title={frontmatter.title} description={frontmatter.description}>
   <div class="content-container align-top">
     <article class="about prose">
       <slot />
     </article>
   </div>
-</Layout>
+</PageLayout>
 
 <style>
   .about :global(h1) {

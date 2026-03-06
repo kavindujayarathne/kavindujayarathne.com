@@ -1,0 +1,113 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+}
+
+const { title, description, ogImage, canonicalURL } = Astro.props;
+---
+
+<Layout title={title} description={description} ogImage={ogImage} canonicalURL={canonicalURL}>
+  <div class="container">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </div>
+</Layout>
+
+<style is:global>
+  /* ── Page Layout ── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+    padding: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main > .align-top {
+    margin-bottom: auto;
+  }
+
+  .content-container {
+    max-width: 800px;
+    padding: 1.5rem 0;
+  }
+
+  /* ── Utilities ── */
+
+  /* Italic subtitle under page headers */
+  .tagline {
+    font-size: var(--fs-base);
+    font-style: italic;
+    color: var(--secondary-color);
+  }
+
+  /* Empty state placeholder */
+  .coming-soon {
+    font-size: var(--fs-base);
+    line-height: 1.8;
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  /* Directional link with arrow icon */
+  .arrow-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: 2rem;
+    color: var(--accent-color);
+    font-size: var(--fs-base);
+  }
+
+  .arrow-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Dashed underline links inside prose content */
+  .prose a:not(.tag) {
+    color: var(--accent-color);
+    border-bottom: 1px dashed var(--accent-color);
+    transition: border-bottom-style var(--transition-speed) ease;
+  }
+
+  .prose a:not(.tag):hover {
+    border-bottom-style: solid;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 1rem;
+    }
+
+    main {
+      padding: 1rem 0;
+    }
+
+    .content-container {
+      padding: 1rem 0;
+    }
+  }
+</style>

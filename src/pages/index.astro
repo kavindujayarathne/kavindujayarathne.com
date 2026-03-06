@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import { getCollection } from 'astro:content';
 import BlogListItem from '../components/BlogListItem.astro';
 import { SITE } from '../config';
@@ -8,7 +8,7 @@ import RightArrowIcon from '../assets/icons/RightArrowIcon.svg?raw';
 
 const sortedPosts = getSortedPosts(await getCollection('blog')).slice(0, 5);
 ---
-<Layout title={SITE.title}>
+<PageLayout title={SITE.title}>
   <div class="content-container align-top">
     <section class="hero">
       <div class="hero-content">
@@ -37,7 +37,7 @@ const sortedPosts = getSortedPosts(await getCollection('blog')).slice(0, 5);
       </section>
     )}
   </div>
-</Layout>
+</PageLayout>
 
 <style>
   .hero {

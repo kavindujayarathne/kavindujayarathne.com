@@ -1,7 +1,7 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import BaseHead from '../components/BaseHead.astro';
+import BaseHead from './BaseHead.astro';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import { SITE } from '../config';
 
 interface Props {
@@ -18,15 +18,17 @@ const { title, description = SITE.description, ogImage, canonicalURL } = Astro.p
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} image={ogImage} canonicalURL={canonicalURL} />
+
+    <!-- Umami Analytics -->
+    <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="76376600-3d9d-4eb7-9b87-cf31853b44b0"></script>
   </head>
   <body>
-    <div class="container">
-      <Header />
-      <main>
-        <slot />
-      </main>
-      <Footer />
-    </div>
+    <slot />
+    <!-- Vercel Analytics -->
+    <Analytics />
+
+    <!-- Vercel SpeedInsights -->
+    <SpeedInsights />
   </body>
 </html>
 
@@ -112,78 +114,6 @@ const { title, description = SITE.description, ogImage, canonicalURL } = Astro.p
                 border-color var(--transition-speed) ease;
   }
 
-  /* ── Layout ── */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
-  main {
-    flex: 1;
-    padding: 1.5rem 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  main > .align-top {
-    margin-bottom: auto;
-  }
-
-  .content-container {
-    max-width: 800px;
-    padding: 1.5rem 0;
-  }
-
-  /* ── Utilities ── */
-
-  /* Italic subtitle under page headers */
-  .tagline {
-    font-size: var(--fs-base);
-    font-style: italic;
-    color: var(--secondary-color);
-  }
-
-  /* Empty state placeholder */
-  .coming-soon {
-    font-size: var(--fs-base);
-    line-height: 1.8;
-    color: var(--secondary-color);
-    text-align: center;
-    padding: 3rem 0;
-  }
-
-  /* Directional link with arrow icon */
-  .arrow-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    margin-top: 2rem;
-    color: var(--accent-color);
-    font-size: var(--fs-base);
-  }
-
-  .arrow-link:hover {
-    text-decoration: underline;
-  }
-
-  /* Dashed underline links inside prose content */
-  .prose a:not(.tag) {
-    color: var(--accent-color);
-    border-bottom: 1px dashed var(--accent-color);
-    transition: border-bottom-style var(--transition-speed) ease;
-  }
-
-  .prose a:not(.tag):hover {
-    border-bottom-style: solid;
-  }
-
   /* ── Responsive ── */
   @media (max-width: 768px) {
     :root {
@@ -204,18 +134,6 @@ const { title, description = SITE.description, ogImage, canonicalURL } = Astro.p
 
     html {
       font-size: 14px;
-    }
-
-    .container {
-      padding: 0 1rem;
-    }
-
-    main {
-      padding: 1rem 0;
-    }
-
-    .content-container {
-      padding: 1rem 0;
     }
   }
 </style>

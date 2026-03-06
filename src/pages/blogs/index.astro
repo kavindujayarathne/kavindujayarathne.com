@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
 import { getCollection } from 'astro:content';
 import BlogListItem from '../../components/BlogListItem.astro';
 import { SITE } from '../../config';
@@ -9,7 +9,7 @@ const allBlogPosts = await getCollection('blog');
 const sortedPosts = getSortedPosts(allBlogPosts);
 ---
 
-<Layout title={`Blog | ${SITE.title}`} description={SITE.blogDescription}>
+<PageLayout title={`Blog | ${SITE.title}`} description={SITE.blogDescription}>
   <div class="content-container align-top">
     <div class="page-header">
       <h1>Blogs</h1>
@@ -27,7 +27,7 @@ const sortedPosts = getSortedPosts(allBlogPosts);
       </p>
     )}
   </div>
-</Layout>
+</PageLayout>
 
 <style>
   .page-header {

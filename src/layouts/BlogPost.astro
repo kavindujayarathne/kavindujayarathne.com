@@ -1,5 +1,5 @@
 ---
-import Layout from './Layout.astro';
+import PageLayout from './PageLayout.astro';
 import { SITE } from '../config';
 import { formatDate, getReadingTime, slugifyTag } from '../utils';
 
@@ -20,7 +20,7 @@ const formattedModDate = modDate ? formatDate(modDate) : undefined;
 const readingTime = body ? getReadingTime(body) : undefined;
 ---
 
-<Layout title={`${title} | ${SITE.title}`} description={description} ogImage={ogImage} canonicalURL={canonicalURL}>
+<PageLayout title={`${title} | ${SITE.title}`} description={description} ogImage={ogImage} canonicalURL={canonicalURL}>
   <div class="content-container blog-container align-top">
     <article class="blog-content prose" data-pagefind-body>
       <header>
@@ -44,7 +44,7 @@ const readingTime = body ? getReadingTime(body) : undefined;
       </div>
     </article>
   </div>
-</Layout>
+</PageLayout>
 
 <script>
   import '../scripts/copy-code';

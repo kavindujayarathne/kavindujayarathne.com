@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
 import { getCollection } from 'astro:content';
 import BlogListItem from '../../components/BlogListItem.astro';
 import { SITE } from '../../config';
@@ -25,7 +25,7 @@ const { posts, tag } = Astro.props;
 const sortedPosts = getSortedPosts(posts);
 ---
 
-<Layout title={`${tag} | ${SITE.title}`} description={`Blog posts tagged with ${tag}`}>
+<PageLayout title={`${tag} | ${SITE.title}`} description={`Blog posts tagged with ${tag}`}>
   <div class="content-container align-top">
     <h2>Posts tagged with <span class="highlight">{tag}</span></h2>
     
@@ -43,7 +43,7 @@ const sortedPosts = getSortedPosts(posts);
       <a href="/blogs" class="arrow-link"><Fragment set:html={LeftArrowIcon} /> Back to all posts</a>
     </div>
   </div>
-</Layout>
+</PageLayout>
 
 <style>
   h2 {

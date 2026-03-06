@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import { SITE } from '../config';
 import LeftArrowIcon from '../assets/icons/LeftArrowIcon.svg?raw';
 ---
 
-<Layout title={`404: Page Not Found | ${SITE.title}`} description="The page you're looking for doesn't exist.">
+<PageLayout title={`404: Page Not Found | ${SITE.title}`} description="The page you're looking for doesn't exist.">
   <div class="error-page content-container">
     <div>
       <h1>404</h1>
@@ -15,7 +15,7 @@ import LeftArrowIcon from '../assets/icons/LeftArrowIcon.svg?raw';
       </a>
     </div>
   </div>
-</Layout>
+</PageLayout>
 
 <style>
   .error-page {

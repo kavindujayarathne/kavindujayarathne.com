@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import { projects } from '../data/projects';
 import { SITE } from '../config';
 
@@ -8,7 +8,7 @@ const sortedProjects = [...projects].sort(
 );
 ---
 
-<Layout
+<PageLayout
   title={`Projects | ${SITE.title}`}
   description={`Explore ${SITE.author}'s projects and portfolio work.`}
 >
@@ -55,7 +55,7 @@ const sortedProjects = [...projects].sort(
       </p>
     )}
   </div>
-</Layout>
+</PageLayout>
 
 <style>
   .page-header {

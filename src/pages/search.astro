@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import { SITE } from '../config';
 import '@pagefind/default-ui/css/ui.css';
 ---
 
-<Layout title={`Search | ${SITE.title}`} description="Search blog posts and projects.">
+<PageLayout title={`Search | ${SITE.title}`} description="Search blog posts and projects.">
   <div class="content-container align-top search-container">
     <div class="page-header">
       <h1>Search</h1>
@@ -17,7 +17,7 @@ import '@pagefind/default-ui/css/ui.css';
       </p>
     )}
   </div>
-</Layout>
+</PageLayout>
 
 <script>
   import '../scripts/search';
