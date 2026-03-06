@@ -5,12 +5,13 @@ import SunIcon from '../assets/icons/SunIcon.svg?raw';
 import RssIcon from '../assets/icons/RssIcon.svg?raw';
 import MenuIcon from '../assets/icons/MenuIcon.svg?raw';
 import CloseIcon from '../assets/icons/CloseIcon.svg?raw';
+import { SITE } from "../config.ts";
 ---
 
 <header>
   <div class="logo">
-    <a href="/" class="full-name">Kavindu Jayarathne</a>
-    <a href="/" class="short-name">Kavindu</a>
+    <a href="/" class="full-name">{SITE.author}</a>
+    <a href="/" class="short-name">{SITE.shortName}</a>
   </div>
   <nav>
     <ul class="nav-links">

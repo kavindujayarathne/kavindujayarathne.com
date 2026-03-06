@@ -1,11 +1,12 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { SITE } from "./src/config";
 
 // https://astro.build/config
 export default defineConfig({
   trailingSlash: 'never',
-  site: 'https://kavindujayarathne.com',
+  site: SITE.website,
   integrations: [sitemap()],
   markdown: {
     syntaxHighlight: 'shiki',
