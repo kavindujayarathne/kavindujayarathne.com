@@ -2,9 +2,6 @@ import LinkedinIcon from './assets/icons/LinkedinIcon.svg?raw';
 import GitHubIcon from './assets/icons/GitHubIcon.svg?raw';
 import XIcon from './assets/icons/XIcon.svg?raw';
 import BlueskyIcon from './assets/icons/BlueskyIcon.svg?raw';
-import RedditIcon from './assets/icons/RedditIcon.svg?raw';
-import DailyDevIcon from './assets/icons/DailyDevIcon.svg?raw';
-import TikTokIcon from './assets/icons/TikTokIcon.svg?raw';
 import InstagramIcon from './assets/icons/InstagramIcon.svg?raw';
 import FacebookIcon from './assets/icons/FacebookIcon.svg?raw';
 import YouTubeIcon from './assets/icons/YouTubeIcon.svg?raw';
@@ -41,35 +38,20 @@ export const SOCIALS: Social[] = [
     icon: BlueskyIcon,
   },
   {
-    name: 'Reddit',
-    url: 'https://reddit.com/u/kavindujayarathne',
-    icon: RedditIcon,
-  },
-  {
-    name: 'Daily.dev',
-    url: 'https://app.daily.dev/kavindujayarathne',
-    icon: DailyDevIcon,
-  },
-  {
-    name: 'TikTok',
-    url: 'https://tiktok.com/@at_kavindu',
-    icon: TikTokIcon,
-  },
-  {
     name: 'Instagram',
     url: 'https://instagram.com/at_kavindu',
     icon: InstagramIcon,
   },
-  {
-    name: 'Facebook',
-    url: '#',
-    icon: FacebookIcon,
-  },
-  {
-    name: 'YouTube',
-    url: '#',
-    icon: YouTubeIcon,
-  },
+  // {
+  //   name: 'Facebook',
+  //   url: '#',
+  //   icon: FacebookIcon,
+  // },
+  // {
+  //   name: 'YouTube',
+  //   url: '#',
+  //   icon: YouTubeIcon,
+  // },
   {
     name: 'Discord',
     url: 'https://discord.com/users/at_kavindu',
@@ -80,11 +62,11 @@ export const SOCIALS: Social[] = [
     url: 'https://tryhackme.com/p/kavindujayarathne',
     icon: TryHackMeIcon,
   },
-  {
-    name: 'Buy Me A Coffee',
-    url: '#',
-    icon: CoffeeIcon,
-  },
+  // {
+  //   name: 'Buy Me A Coffee',
+  //   url: '#',
+  //   icon: CoffeeIcon,
+  // },
   {
     name: 'Email',
     url: '#',
