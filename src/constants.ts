@@ -3,11 +3,11 @@ import GitHubIcon from './assets/icons/GitHubIcon.svg?raw';
 import XIcon from './assets/icons/XIcon.svg?raw';
 import BlueskyIcon from './assets/icons/BlueskyIcon.svg?raw';
 import InstagramIcon from './assets/icons/InstagramIcon.svg?raw';
-import FacebookIcon from './assets/icons/FacebookIcon.svg?raw';
-import YouTubeIcon from './assets/icons/YouTubeIcon.svg?raw';
 import TryHackMeIcon from './assets/icons/TryHackMeIcon.svg?raw';
-import CoffeeIcon from './assets/icons/CoffeeIcon.svg?raw';
 import MailIcon from './assets/icons/MailIcon.svg?raw';
+// import FacebookIcon from './assets/icons/FacebookIcon.svg?raw';
+// import YouTubeIcon from './assets/icons/YouTubeIcon.svg?raw';
+// import CoffeeIcon from './assets/icons/CoffeeIcon.svg?raw';
 
 export type Social = {
   name: string;

@@ -30,7 +30,7 @@ along with their leftovers.`,
       { text: 'macpak Documentation', url: '/blogs/macpak-documentation' },
       { text: 'macpak Homebrew Tap Repository', url: 'https://github.com/kavindujayarathne/homebrew-macpak' },
       { text: 'CHANGELOG.md', url: 'https://raw.githubusercontent.com/kavindujayarathne/macpak/refs/heads/main/CHANGELOG.md' },
-      { text: 'Story Behind macpak', url: '/blogs/journey-of-my-first-cli-tool' },
+      { text: 'Story Behind macpak', url: '/blogs/journey-of-macpak' },
     ],
   },
 ];
