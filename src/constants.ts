@@ -5,7 +5,6 @@ import BlueskyIcon from './assets/icons/BlueskyIcon.svg?raw';
 import InstagramIcon from './assets/icons/InstagramIcon.svg?raw';
 import FacebookIcon from './assets/icons/FacebookIcon.svg?raw';
 import YouTubeIcon from './assets/icons/YouTubeIcon.svg?raw';
-import DiscordIcon from './assets/icons/DiscordIcon.svg?raw';
 import TryHackMeIcon from './assets/icons/TryHackMeIcon.svg?raw';
 import CoffeeIcon from './assets/icons/CoffeeIcon.svg?raw';
 import MailIcon from './assets/icons/MailIcon.svg?raw';
@@ -52,11 +51,6 @@ export const SOCIALS: Social[] = [
   //   url: '#',
   //   icon: YouTubeIcon,
   // },
-  {
-    name: 'Discord',
-    url: 'https://discord.com/users/at_kavindu',
-    icon: DiscordIcon,
-  },
   {
     name: 'TryHackMe',
     url: 'https://tryhackme.com/p/kavindujayarathne',
