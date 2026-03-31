@@ -33,4 +33,18 @@ along with their leftovers.`,
       { text: 'Story Behind macpak', url: '/blogs/journey-of-macpak' },
     ],
   },
+  {
+    title: 'uncabled',
+    description: `uncabled turns your phone (or any device with a camera) into a wireless virtual camera for OBS,
+powered by WebRTC. Built for content creators who want a face cam setup for streaming or recording
+but don't have the budget for professional cameras, capture cards, and cables. Both devices just need
+to be on the same local network, and the video flows peer-to-peer with minimal latency.`,
+    tags: ['uncabled', 'webrtc', 'obs'],
+    date: '2026-03-31',
+    status: 'active',
+    links: [
+      { text: 'uncabled Repository', url: 'https://github.com/kavindujayarathne/uncabled' },
+      { text: 'README', url: 'https://github.com/kavindujayarathne/uncabled/blob/main/README.md' },
+    ],
+  },
 ];
