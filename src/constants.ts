@@ -63,7 +63,7 @@ export const SOCIALS: Social[] = [
   // },
   {
     name: 'Email',
-    url: 'kavindujayarathne@proton.me',
+    url: 'mailto:kavindujayarathne@proton.me',
     icon: MailIcon,
   },
 ];
