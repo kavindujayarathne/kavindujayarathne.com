@@ -9,6 +9,8 @@ tags: ['GitHub']
 ogImage: '/og-images/macpak-demo-github.png'
 ---
 
+![Thumbnail](../../assets/images/github-readme-media/macpak-demo-github.png)
+
 Recently, I was working with the [macpak](https://github.com/kavindujayarathne/macpak) CLI tool that
 I built to ease the workflow of using Homebrew. I just wanted to add a demo video to its README.md
 file, but GitHub is very strict with media files and their file sizes. What I was trying to add was
